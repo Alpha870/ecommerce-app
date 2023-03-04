@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem;
+  height: 5rem;
+  margin-bottom: 5rem;
+}
+
+.contacto {
+  display: flex;
+  flex-direction: column;
+  max-width: 30%;
+}
+
+.icons {
+  display: flex;
+  justify-content: baseline;
+}
+
+.icons span {
+  font-size: medium;
+}

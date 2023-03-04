@@ -1,18 +1,40 @@
-.navbar {
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.container-logo {
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0;
+}
+
+.navbar {
   width: 100%;
 }
 
 .logo {
-  height: 200px;
-  margin-top: -50px;
-  margin-bottom: -50px;
+  margin: 1rem;
+  height: 4rem;
 }
 
 .showList {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
+
+.lateral {
+  background-color: linear-gradient ;
+  font-weight: 700;
+  line-height : 1rem;
+  color: #4CD3C2;
+}
+
+.perfil {
+  margin-top: 2rem;
+}
+
+/* @media screen and (min-width: 992px) {
+} */
