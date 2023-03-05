@@ -60,3 +60,33 @@
   font-weight: 700;
   color: #0a97b0;
 }
+
+.acordeon {
+  min-width: 80%;
+}
+
+.acordeon-header {
+  font-weight: 700;
+}
+
+.link-button {
+  display: flex;
+  justify-content: center;
+}
+
+.boton-mas {
+  margin: 3rem;
+  height: 8rem;
+  width: 80%;
+  border-radius: 5rem;
+  border: 0.5rem solid #4CD3C2;
+  background-color: transparent;
+  color: #4CD3C2;
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.boton-mas:hover {
+  background-color: #4CD3C2;
+  border: 2px solid white;
+}

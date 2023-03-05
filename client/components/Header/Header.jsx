@@ -40,10 +40,10 @@ const Header = () => {
           </Offcanvas.Header>
           <Nav className="showList">
             <Nav.Link>
-              <Link to={"/productos"}>Servicios/Packs</Link>
+              <Link to={"/products"}>Servicios/Packs</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to={"/conoceme"}>Acerca de mi</Link>
+              <Link to={"/about"}>Acerca de mi</Link>
             </Nav.Link>
             <Nav.Link className="perfil">
               <Link to={"/profile"}>

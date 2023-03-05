@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../Header/Header'
 
-const Conoceme = () => {
+const About = () => {
   return (
     <>
     <Header />
@@ -10,4 +10,4 @@ const Conoceme = () => {
   )
 }
 
-export default Conoceme
+export default About
