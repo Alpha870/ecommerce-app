@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css"
+import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Login from "./components/Login/Login";
@@ -9,6 +9,8 @@ import Profile from "./components/Perfil/Profile";
 import Carrito from "./components/Carrito/Carrito";
 import Orders from "./components/Pedidos/Orders";
 import Crear from "./components/Crear/Crear";
+import Conoceme from "./components/Conoceme/Conoceme";
+
 
 const router = createBrowserRouter([
   {
@@ -22,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/conoceme",
+    element: <Conoceme />,
   },
   {
     path: "/productos",

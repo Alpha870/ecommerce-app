@@ -9,7 +9,7 @@
 .contacto {
   display: flex;
   flex-direction: column;
-  max-width: 30%;
+  max-width: 50%;
 }
 
 .icons {

@@ -43,7 +43,7 @@ const Header = () => {
               <Link to={"/productos"}>Servicios/Packs</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to={"#Nosotros"}>Acerca de mi</Link>
+              <Link to={"/conoceme"}>Acerca de mi</Link>
             </Nav.Link>
             <Nav.Link className="perfil">
               <Link to={"/profile"}>
