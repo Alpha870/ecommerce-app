@@ -11,7 +11,7 @@
   font-weight: 900;
   padding: 1rem;
   font-size: 3rem;
-  color: #4cd3c2;
+  color: white;
 }
 
 .subtitulo {
@@ -19,13 +19,24 @@
   margin-top: 2rem;
   text-align: center;
   font-weight: 700;
-  color: #0a97b0;
+  color: white;
   max-width: 40rem;
 }
 
 .div-img {
   height: auto;
   width: 70%;
+}
+
+.seccion-header-article {
+  background: rgb(237, 232, 245);
+  background: linear-gradient(
+    174deg,
+    rgba(237, 232, 245, 1) 10%,
+    rgba(127, 75, 215, 1) 35%,
+    rgba(51, 55, 138, 1) 63%,
+    rgba(34, 51, 120, 1) 100%
+  );
 }
 
 .div-slider {
@@ -79,14 +90,14 @@
   height: 8rem;
   width: 80%;
   border-radius: 5rem;
-  border: 0.5rem solid #4CD3C2;
+  border: 0.5rem solid #4cd3c2;
   background-color: transparent;
-  color: #4CD3C2;
+  color: #4cd3c2;
   font-size: 4rem;
   font-weight: 700;
 }
 
 .boton-mas:hover {
-  background-color: #4CD3C2;
+  background-color: #4cd3c2;
   border: 2px solid white;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Navbar from "../Header/Header";
 import Footer from "../Footer/Footer";
-import designer from "./programador.png";
+import designer from "./programador-sf.png";
 import "./Home.css";
 import Slider from "../Tools/Carousel/Slider";
 import Accordion from "react-bootstrap/Accordion";
@@ -11,18 +11,30 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <section>
-      <Navbar />
-      <article className="presentacion">
-        <h1 className="titulo">Hola, Soy Omar</h1>
-        <h1 className="titulo">Un desarrollador web</h1>
-        <h2 className="subtitulo">
-          Soy un desarrollador full-stack al que le encanta crear aplicaciones
-          web divertidas, accesibles y atractivas que den vida a los productos.
-        </h2>
-        <div className="div-img">
-          <img className="img-design" src={designer} alt="imagen-diseñador" />
-        </div>
-      </article>
+      <section className="seccion-header-article">
+        <Navbar />
+        <article className="presentacion">
+          <h1 className="titulo">Hola, Soy Omar</h1>
+          <h1 className="titulo">Un desarrollador web</h1>
+          <h2 className="subtitulo">
+            Soy un desarrollador full-stack al que le encanta crear aplicaciones
+            web divertidas, accesibles y atractivas que den vida a los
+            productos.
+          </h2>
+          <div className="div-img">
+            <img className="img-design" src={designer} alt="imagen-diseñador" />
+          </div>
+        </article>
+      </section>
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#223378"
+            fill-opacity="1"
+            d="M0,32L60,48C120,64,240,96,360,96C480,96,600,64,720,90.7C840,117,960,203,1080,202.7C1200,203,1320,117,1380,74.7L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
+          ></path>
+        </svg>
+      </div>
       <aside className="apartado">
         <Accordion className="acordeon">
           <Accordion.Item eventKey="0">
@@ -70,14 +82,15 @@ const Home = () => {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-
-        <div className="div-slider">
-          <Slider />
-        </div>
+          <div className="div-slider">
+        <section className="seccion-slider">
+            <Slider />
+        </section>
+          </div>
       </aside>
-    
-      <Link to={'/about'} className="link-button">
-          <Button className="boton-mas">Conocer más</Button>
+
+      <Link to={"/about"} className="link-button">
+        <Button className="boton-mas">Conocer más</Button>
       </Link>
 
       <Footer />
