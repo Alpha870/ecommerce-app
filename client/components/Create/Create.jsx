@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Crear = () => {
+const Create = () => {
   return (
     <div>Crear</div>
   )
 }
 
-export default Crear
+export default Create

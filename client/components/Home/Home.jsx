@@ -1,18 +1,18 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Navbar from "../Header/Header";
 import Footer from "../Footer/Footer";
 import designer from "./programador-sf.png";
 import "./Home.css";
 import Slider from "../Tools/Carousel/Slider";
 import Accordion from "react-bootstrap/Accordion";
 import { Link } from "react-router-dom";
+import Header from "../Header/Header";
 
 const Home = () => {
   return (
     <section>
       <section className="seccion-header-article">
-        <Navbar />
+        <Header />
         <article className="presentacion">
           <h1 className="titulo">Hola, Soy Omar</h1>
           <h1 className="titulo">Un desarrollador web</h1>
@@ -90,7 +90,7 @@ const Home = () => {
       </aside>
 
       <Link to={"/about"} className="link-button">
-        <Button className="boton-mas">Conocer más</Button>
+        <Button className="boton-mas">Conóceme más</Button>
       </Link>
 
       <Footer />

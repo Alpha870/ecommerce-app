@@ -1,4 +1,3 @@
-
 .header {
   display: flex;
   flex-direction: column;
@@ -26,10 +25,14 @@
 }
 
 .lateral {
-  background-color: linear-gradient ;
+  background-color: linear-gradient;
   font-weight: 700;
-  line-height : 1rem;
-  color: #4CD3C2;
+  line-height: 1rem;
+  color: #4cd3c2;
+}
+
+.titulo-lateral {
+  color: #4cd3c2;
 }
 
 .perfil {

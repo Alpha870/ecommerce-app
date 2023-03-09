@@ -21,9 +21,7 @@ const Header = () => {
         <Navbar className="navbar" expand="xxxl">
           <Container>
             <Navbar.Brand onClick={handleShow}>
-              <Link to={"/"}>
-                <i className="bx bx-menu bx-md"></i>
-              </Link>
+              <i className="bx bx-menu bx-md"></i>
             </Navbar.Brand>
             <Navbar.Brand>
               <Link to={"/checkout"}>
@@ -36,7 +34,11 @@ const Header = () => {
 
         <Offcanvas className="lateral" show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
-            <Offcanvas.Title>HOME</Offcanvas.Title>
+            <Offcanvas.Title>
+              <Link to={"/"}>
+                <span className="titulo-lateral">HOME</span>
+              </Link>
+            </Offcanvas.Title>
           </Offcanvas.Header>
           <Nav className="showList">
             <Nav.Link>

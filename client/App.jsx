@@ -4,18 +4,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Login from "./components/Login/Login";
 import Home from "./components/Home/Home";
-import Producto from "./components/Producto/Producto";
-import Profile from "./components/Perfil/Profile";
-import Carrito from "./components/Carrito/Carrito";
-import Orders from "./components/Pedidos/Orders";
-import Crear from "./components/Crear/Crear";
-import Conoceme from "./components/Conoceme/Conoceme";
+import Profile from "./components/Profile/Profile";
+import Orders from "./components/Orders/Orders";
+import About from "./components/About/About";
+import Create from "./components/Create/Create";
+import Checkout from "./components/Checkout/Checkout";
+import Product from "./components/Product/Producto";
+
 
 
 const router = createBrowserRouter([
   {
     path: "/admin/create/product",
-    element: <Crear />,
+    element: <Create />,
   },
   {
     path: "/",
@@ -27,11 +28,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/about",
-    element: <Conoceme />,
+    element: <About />,
   },
   {
     path: "/products",
-    element: <Producto />,
+    element: <Product />,
   },
   {
     path: "/profile",
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/checkout",
-    element: <Carrito />,
+    element: <Checkout />,
   },
   {
     path: "/orders",
