@@ -15,14 +15,14 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <Link to={"/"} className="container-logo">
-          <img src={Logo} alt="logo-empresa" className="logo" />
-        </Link>
         <Navbar className="navbar" expand="xxxl">
           <Container>
             <Navbar.Brand onClick={handleShow}>
               <i className="bx bx-menu bx-md"></i>
             </Navbar.Brand>
+            <Link to={"/"} className="container-logo">
+              <img src={Logo} alt="logo-empresa" className="logo" />
+            </Link>
             <Navbar.Brand>
               <Link to={"/checkout"}>
                 <i className="bx bx-cart bx-md"></i>

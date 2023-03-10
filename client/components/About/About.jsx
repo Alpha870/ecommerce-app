@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../Header/Header";
 
 const About = () => {
+
+  const[temp, setTemp] = useState(null)
+
+const tiempo = async () => {
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=41.85&longitude=0.29&hourly=temperature_2m&forecast_days=1'
+  const resp = await fetch(url)
+  const data = await resp.json()
+  setTemp(data.hourly.temperature_2m[11])
+} 
+
+useEffect(() => {
+  tiempo()
+},[])
+
+
   return (
     <>
       <Header />
@@ -9,7 +24,7 @@ const About = () => {
         <h1>¿Quien soy?</h1>
         <h3>
           Soy Omar Pérez, un desarrollador con el stack MERN que trabaja a tu
-          lado desde Huesca, España
+          lado a {Math.round(temp)}°C en Huesca, España
         </h3>
         <h5>
           Mi pasion siempre han sido las tecnologias, esta curiosidad fue la que
