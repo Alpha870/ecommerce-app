@@ -9,7 +9,6 @@
 
 .titulo {
   font-weight: 900;
-  padding: 1rem;
   font-size: 3rem;
   color: white;
 }
@@ -88,7 +87,7 @@
 .boton-mas {
   margin: 3rem;
   height: 8rem;
-  width: 80%;
+  width: 90%;
   border-radius: 5rem;
   border: 0.5rem solid #4cd3c2;
   background-color: transparent;
@@ -100,4 +99,11 @@
 .boton-mas:hover {
   background-color: #4cd3c2;
   border: 2px solid white;
+}
+
+@media screen and (max-width: 622px) {
+  .boton-mas {
+    height: auto;
+    font-size: 2rem;
+  }
 }

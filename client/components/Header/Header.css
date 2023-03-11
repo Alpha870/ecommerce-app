@@ -8,6 +8,7 @@
 .container-logo {
   display: flex;
   justify-content: center;
+  
 }
 
 .navbar {
@@ -25,19 +26,27 @@
 }
 
 .lateral {
-  background-color: linear-gradient;
   font-weight: 700;
   line-height: 1rem;
-  color: #4cd3c2;
+  background: rgb(237, 232, 245);
+  background: linear-gradient(
+    180deg,
+    rgba(237, 232, 245, 1) 32%,
+    rgba(104, 69, 192, 1) 87%
+  );
 }
-
 .titulo-lateral {
   color: #4cd3c2;
+  font-weight: bold;
 }
 
 .perfil {
   margin-top: 2rem;
 }
 
-/* @media screen and (min-width: 992px) {
-} */
+@media screen and (max-width: 375px) {
+  .logo {
+    height: auto;
+    width: 10rem;
+  }
+}
