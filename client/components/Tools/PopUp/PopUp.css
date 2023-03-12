@@ -1,3 +1,13 @@
-.button-pop {
-    background-color: rgb(225, 0, 255);
+.boton-pop {
+  border-radius: 1rem;
+  border: 1px solid #4cd3c2;
+  background-color: transparent;
+  color: #4cd3c2;
+  font-weight: 700;
+}
+
+.boton-pop:hover {
+  background-color: #4cd3c2;
+  color: white;
+  border: none;
 }

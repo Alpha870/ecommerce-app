@@ -4,6 +4,7 @@ import foto from "./perfil.png";
 import "./About.css";
 import Popup from "../Tools/Popup/Popup";
 import pilar from "./pilar-sf.png";
+import Footer from "../Footer/Footer";
 
 const About = () => {
   const [temp, setTemp] = useState(null);
@@ -43,7 +44,7 @@ const About = () => {
     relevante para la audiencia y esté optimizado para motores de
     búsqueda. Un buen contenido debe ser claro, conciso y fácil de
     entender para mantener a los visitantes interesados.`,
-    button: "PILARES",
+    button: "GRANDES",
   };
   const fundamentales = {
     title: "04 Marketing",
@@ -52,7 +53,7 @@ const About = () => {
     las diferentes herramientas de marketing disponibles, como SEO, SEM,
     redes sociales, entre otras, y utilizarlas de manera efectiva para
     aumentar la visibilidad del sitio web y atraer a nuevos usuarios.`,
-    button: "FUNDAMENTALES",
+    button: "PILARES",
   };
 
   return (
@@ -86,13 +87,14 @@ const About = () => {
             </article>
           </div>
         </section>
-        <aside>
+        <aside className="aside-pilares">
+          <h1 className="titulo-pilares">Pienso que...</h1>
           <section className="about-pilares">
-            <div className="div-pilares">
+            <div className="div-pilares1">
               <Popup title={mis.title} body={mis.body} button={mis.button} />
               <img className="img-pilar" src={pilar} alt="imagen pilar" />
             </div>
-            <div className="div-pilares">
+            <div className="div-pilares2">
               <Popup
                 title={cuatro.title}
                 body={cuatro.body}
@@ -100,7 +102,7 @@ const About = () => {
               />
               <img className="img-pilar" src={pilar} alt="imagen pilar" />
             </div>
-            <div className="div-pilares">
+            <div className="div-pilares3">
               <Popup
                 title={pilares.title}
                 body={pilares.body}
@@ -108,7 +110,7 @@ const About = () => {
               />
               <img className="img-pilar" src={pilar} alt="imagen pilar" />
             </div>
-            <div className="div-pilares">
+            <div className="div-pilares4">
               <Popup
                 title={fundamentales.title}
                 body={fundamentales.body}
@@ -120,11 +122,13 @@ const About = () => {
         </aside>
 
         <div>
+          <h1>Disfruto de...</h1>
           <h5>
             Fuera del trabajo, disfruto de otras de mis 2 grandes pasiones mi
             familia y es estar rodeado de naturaleza y poder escaparme a hacer
             trekking hace que mis pilas se recarguen.
           </h5>
+          <Footer />
         </div>
       </article>
     </main>
