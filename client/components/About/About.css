@@ -79,7 +79,7 @@
   font-weight: 900;
   padding: 1rem;
   font-size: 3rem;
-  color: #223378
+  color: #223378;
 }
 
 .about-pilares {
@@ -114,6 +114,41 @@
   width: 100%;
 }
 
+/* DESCONECTO */
+.descrip-about-desconecto {
+  margin: 1rem 2rem;
+  font-size: 1rem;
+  color: #453c9c;
+  max-width: 60%;
+}
+
+.div-imagenes-desconecto {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.figure-desc {
+  margin: 0.5rem;
+  width: 50%;
+}
+
+.img-desc{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.figure-desc figcaption {
+  bottom: 1rem;
+  border-radius: 1rem;
+  /* background-color: rgb(40, 176, 185); */
+  bottom: 1rem;
+  left: 1rem;
+  color: black;
+}
 /* ********* MEDIA ********* */
 
 @media screen and (max-width: 771px) {
@@ -214,5 +249,4 @@
   .div-pilares4 button {
     font-size: 0.8rem;
   }
-  
 }

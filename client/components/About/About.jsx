@@ -5,6 +5,8 @@ import "./About.css";
 import Popup from "../Tools/Popup/Popup";
 import pilar from "./pilar-sf.png";
 import Footer from "../Footer/Footer";
+import cola from "./cola.png";
+import cima from "./cima.jpg";
 
 const About = () => {
   const [temp, setTemp] = useState(null);
@@ -57,81 +59,99 @@ const About = () => {
   };
 
   return (
-    <main>
-      <article>
-        <section className="section-quienSoy">
-          <Header />
-          <h1 className="titulo-about">¿Quien soy?</h1>
-          <div className="div-foto-descripcion">
-            <img className="foto-about" src={foto} alt="foto-personal" />
-            <article className="div-about-texto">
-              <h2 className="subtitulo-about">
-                Soy Omar Pérez, un desarrollador con el stack MERN que trabaja a
-                tu lado desde {temp ? `${Math.round(temp)}°C en` : ""} Huesca,
-                España
-              </h2>
+    <>
+      <section className="section-quienSoy">
+        <Header />
+        <h1 className="titulo-about">¿Quien soy?</h1>
+        <div className="div-foto-descripcion">
+          <img className="foto-about" src={foto} alt="foto-personal" />
+          <article className="div-about-texto">
+            <h2 className="subtitulo-about">
+              Soy Omar Pérez, un desarrollador con el stack MERN que trabaja a
+              tu lado desde {temp ? `${Math.round(temp)}°C en` : ""} Huesca,
+              España
+            </h2>
 
-              <p className="descrip-about-pasion">
-                Desde siempre, me ha apasionado entender cómo el ser humano y la
-                máquina pueden comunicarse. Fue esta curiosidad la que me
-                impulsó a adentrarme en el sector de la tecnología y explorar
-                todas las posibilidades que ofrece.
-              </p>
-              <p className="descrip-about-enfoque">
-                Actualmente, mi enfoque se centra en profundizar en la
-                especialización de estas tecnologías para mejorar continuamente
-                en mi dia a dia. Además, mi curiosidad natural me lleva a
-                explorar la rama de la ciberseguridad, con el objetivo de
-                convertirme en un profesional más completo y capaz.
-              </p>
-            </article>
+            <p className="descrip-about-pasion">
+              Desde siempre, me ha apasionado entender cómo el ser humano y la
+              máquina pueden comunicarse. Fue esta curiosidad la que me impulsó
+              a adentrarme en el sector de la tecnología y explorar todas las
+              posibilidades que ofrece.
+            </p>
+            <p className="descrip-about-enfoque">
+              Actualmente, mi enfoque se centra en profundizar en la
+              especialización de estas tecnologías para mejorar continuamente en
+              mi dia a dia. Además, mi curiosidad natural me lleva a explorar la
+              rama de la ciberseguridad, con el objetivo de convertirme en un
+              profesional más completo y capaz.
+            </p>
+          </article>
+        </div>
+      </section>
+      <aside className="aside-pilares">
+        <h1 className="titulo-pilares">Pienso que...</h1>
+        <section className="about-pilares">
+          <div className="div-pilares1">
+            <Popup title={mis.title} body={mis.body} button={mis.button} />
+            <img className="img-pilar" src={pilar} alt="imagen pilar" />
+          </div>
+          <div className="div-pilares2">
+            <Popup
+              title={cuatro.title}
+              body={cuatro.body}
+              button={cuatro.button}
+            />
+            <img className="img-pilar" src={pilar} alt="imagen pilar" />
+          </div>
+          <div className="div-pilares3">
+            <Popup
+              title={pilares.title}
+              body={pilares.body}
+              button={pilares.button}
+            />
+            <img className="img-pilar" src={pilar} alt="imagen pilar" />
+          </div>
+          <div className="div-pilares4">
+            <Popup
+              title={fundamentales.title}
+              body={fundamentales.body}
+              button={fundamentales.button}
+            />
+            <img className="img-pilar" src={pilar} alt="imagen pilar" />
           </div>
         </section>
-        <aside className="aside-pilares">
-          <h1 className="titulo-pilares">Pienso que...</h1>
-          <section className="about-pilares">
-            <div className="div-pilares1">
-              <Popup title={mis.title} body={mis.body} button={mis.button} />
-              <img className="img-pilar" src={pilar} alt="imagen pilar" />
-            </div>
-            <div className="div-pilares2">
-              <Popup
-                title={cuatro.title}
-                body={cuatro.body}
-                button={cuatro.button}
-              />
-              <img className="img-pilar" src={pilar} alt="imagen pilar" />
-            </div>
-            <div className="div-pilares3">
-              <Popup
-                title={pilares.title}
-                body={pilares.body}
-                button={pilares.button}
-              />
-              <img className="img-pilar" src={pilar} alt="imagen pilar" />
-            </div>
-            <div className="div-pilares4">
-              <Popup
-                title={fundamentales.title}
-                body={fundamentales.body}
-                button={fundamentales.button}
-              />
-              <img className="img-pilar" src={pilar} alt="imagen pilar" />
-            </div>
-          </section>
-        </aside>
+      </aside>
 
-        <div>
-          <h1>Disfruto de...</h1>
-          <h5>
-            Fuera del trabajo, disfruto de otras de mis 2 grandes pasiones mi
-            familia y es estar rodeado de naturaleza y poder escaparme a hacer
-            trekking hace que mis pilas se recarguen.
-          </h5>
-          <Footer />
+      <section>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#223378"
+            fill-opacity="1"
+            d="M0,32L1440,160L1440,0L0,0Z"
+          ></path>
+        </svg>
+        <h1 className="titulo-pilares">Cuando desconecto...</h1>
+        <h5 className="descrip-about-desconecto">
+          Fuera del trabajo, disfruto de otras de mis 2 grandes pasiones mi
+          familia y es estar rodeado de naturaleza y poder escaparme a hacer
+          trekking hace que mis pilas se recarguen.
+        </h5>
+        <h5 className="descrip-about-desconecto">
+          Siempre acompañado de una buena taza de café...
+        </h5>
+        <div className="div-imagenes-desconecto">
+          <figure className="figure-desc">
+            <figcaption>Cascada Cola de Caballo</figcaption>
+            <img className="img-desc" src={cola} alt="cola de caballo" />
+          </figure>
+          <figure className="figure-desc">
+            <figcaption>Cima Peña Montañesa</figcaption>
+            <img className="img-desc" src={cima} alt="cima peña montañesa" />
+          </figure>
         </div>
-      </article>
-    </main>
+      </section>
+      <Footer />
+    </>
   );
 };
 
