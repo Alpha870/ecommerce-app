@@ -13,6 +13,9 @@
     rgba(34, 51, 120, 1) 100%
   );
 }
+
+/* SECCION FOTO PRESENTACION */
+
 .titulo-about {
   margin-top: 3rem;
   font-weight: 900;
@@ -63,6 +66,26 @@
   max-width: 60%;
 }
 
+/* SECCION PILARES */
+
+.about-pilares {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  height: 25rem;
+  gap: 2rem;
+  margin: 2rem;
+}
+
+.div-pilares {
+  display: flex;
+  flex-direction: column;
+}
+
+.img-pilar {
+  align-self: center;
+  width: 100%;
+}
 
 /* ********* MEDIA ********* */
 
