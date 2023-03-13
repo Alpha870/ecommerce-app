@@ -40,7 +40,7 @@ const About = () => {
     atraer y mantener la atención de los visitantes.`,
     button: "CUATRO",
   };
-  const pilares = {
+  const grandes = {
     title: "03 Contenido",
     body: `El contenido debe ser de calidad y que sea
     relevante para la audiencia y esté optimizado para motores de
@@ -48,7 +48,7 @@ const About = () => {
     entender para mantener a los visitantes interesados.`,
     button: "GRANDES",
   };
-  const fundamentales = {
+  const pilares = {
     title: "04 Marketing",
     body: `Aunque hay una parte de marketing que
     pertence al cliente, insisto en la importancia de tener en cuenta
@@ -105,17 +105,17 @@ const About = () => {
           </div>
           <div className="div-pilares3">
             <Popup
-              title={pilares.title}
-              body={pilares.body}
-              button={pilares.button}
+              title={grandes.title}
+              body={grandes.body}
+              button={grandes.button}
             />
             <img className="img-pilar" src={pilar} alt="imagen pilar" />
           </div>
           <div className="div-pilares4">
             <Popup
-              title={fundamentales.title}
-              body={fundamentales.body}
-              button={fundamentales.button}
+              title={pilares.title}
+              body={pilares.body}
+              button={pilares.button}
             />
             <img className="img-pilar" src={pilar} alt="imagen pilar" />
           </div>
@@ -141,11 +141,11 @@ const About = () => {
         </h5>
         <div className="div-imagenes-desconecto">
           <figure className="figure-desc">
-            <figcaption>Cascada Cola de Caballo</figcaption>
+            <figcaption className="figcaption-desc">Cascada Cola de Caballo</figcaption>
             <img className="img-desc" src={cola} alt="cola de caballo" />
           </figure>
           <figure className="figure-desc">
-            <figcaption>Cima Peña Montañesa</figcaption>
+            <figcaption className="figcaption-desc">Cima Peña Montañesa</figcaption>
             <img className="img-desc" src={cima} alt="cima peña montañesa" />
           </figure>
         </div>

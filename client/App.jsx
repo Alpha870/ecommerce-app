@@ -7,16 +7,16 @@ import Home from "./components/Home/Home";
 import Profile from "./components/Profile/Profile";
 import Orders from "./components/Orders/Orders";
 import About from "./components/About/About";
-import Create from "./components/Create/Create";
 import Checkout from "./components/Checkout/Checkout";
-import Product from "./components/Product/Producto";
+import Products from "./components/Products/Products";
+import CreateProduct from "./components/Admin/CreateProduct";
 
 
 
 const router = createBrowserRouter([
   {
     path: "/admin/create/product",
-    element: <Create />,
+    element: <CreateProduct />,
   },
   {
     path: "/",
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/products",
-    element: <Product />,
+    element: <Products />,
   },
   {
     path: "/profile",
