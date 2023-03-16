@@ -68,7 +68,7 @@ const About = () => {
           <article className="div-about-texto">
             <h2 className="subtitulo-about">
               Soy Omar Pérez, un desarrollador con el stack MERN que trabaja a
-              tu lado desde {temp ? `${Math.round(temp)}°C en` : ""} Huesca,
+              tu lado {temp ? `a ${Math.round(temp)}°C en` : "desde"} Huesca,
               España
             </h2>
 
