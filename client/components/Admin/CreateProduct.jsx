@@ -22,6 +22,7 @@ const CreateProduct = () => {
     terminado: "",
   };
   
+  //****CREAR****/
   function handleChange(e) {
     const { name, value } = e.target;
     setFormproduct({ ...formProduct, [name]: value });
@@ -32,6 +33,12 @@ const CreateProduct = () => {
     console.log(formProduct);
     setFormproduct(productoInicio)
   };
+
+  //****EDITAR****/
+
+  //****ELIMINAR****/
+
+
 
   return (
     <>

@@ -2,17 +2,14 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
+import "./login.css";
+import circle from "./circle.png";
 
 const Login = () => {
   return (
-    <section
-      style={{
-        marginTop: '5rem',
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
-      <Card style={{ width: "20rem" }}>
+    <section className="section-login">
+      <Card className="card-login">
+        <Card.Title>Iniciar Sesión</Card.Title>
         <Card.Body>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
