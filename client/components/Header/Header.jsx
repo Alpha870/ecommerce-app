@@ -36,7 +36,7 @@ const Header = () => {
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>
               <Link to={"/"}>
-                <span className="titulo-lateral">INCIO</span>
+                <span className="titulo-lateral">INICIO</span>
               </Link>
             </Offcanvas.Title>
           </Offcanvas.Header>
