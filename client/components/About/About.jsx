@@ -7,6 +7,7 @@ import pilar from "./pilar-sf.png";
 import Footer from "../Footer/Footer";
 import cola from "./cola.png";
 import cima from "./cima.jpg";
+import separador from "./separador.png";
 
 const About = () => {
   const [temp, setTemp] = useState(null);
@@ -123,13 +124,8 @@ const About = () => {
       </aside>
 
       <section>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path
-            fill="#223378"
-            fill-opacity="1"
-            d="M0,32L1440,160L1440,0L0,0Z"
-          ></path>
-        </svg>
+        <img style={{width:'100%'}} src={separador} alt="separador " />
+
         <h1 className="titulo-pilares">Cuando desconecto...</h1>
         <h5 className="descrip-about-desconecto">
           Fuera del trabajo, disfruto de otras de mis 2 grandes pasiones mi
@@ -141,11 +137,15 @@ const About = () => {
         </h5>
         <div className="div-imagenes-desconecto">
           <figure className="figure-desc">
-            <figcaption className="figcaption-desc">Cascada Cola de Caballo</figcaption>
+            <figcaption className="figcaption-desc">
+              Cascada Cola de Caballo
+            </figcaption>
             <img className="img-desc" src={cola} alt="cola de caballo" />
           </figure>
           <figure className="figure-desc">
-            <figcaption className="figcaption-desc">Cima Peña Montañesa</figcaption>
+            <figcaption className="figcaption-desc">
+              Cima Peña Montañesa
+            </figcaption>
             <img className="img-desc" src={cima} alt="cima peña montañesa" />
           </figure>
         </div>

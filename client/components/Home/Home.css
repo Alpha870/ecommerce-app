@@ -71,8 +71,13 @@
   color: #0a97b0;
 }
 
+.curva-home {
+  width: 100%;
+}
+
 .acordeon {
   min-width: 80%;
+  margin-top: 5rem;
 }
 
 .acordeon-header {

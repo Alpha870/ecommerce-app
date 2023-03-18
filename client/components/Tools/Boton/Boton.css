@@ -1,0 +1,12 @@
+.boton {
+    border-radius: 2rem;
+    border: 0.2rem solid #4cd3c2;
+    background-color: transparent;
+    color: #4cd3c2;
+    font-weight: 700;
+  }
+  
+  .boton:hover {
+    background-color: #4cd3c2;
+    border: 0.2rem solid #4cd3c2;
+  }

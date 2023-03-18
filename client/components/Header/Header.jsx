@@ -36,16 +36,19 @@ const Header = () => {
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>
               <Link to={"/"}>
-                <span className="titulo-lateral">HOME</span>
+                <span className="titulo-lateral">INCIO</span>
               </Link>
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Nav className="showList">
             <Nav.Link>
-              <Link to={"/products"}>Servicios/Packs</Link>
+              <Link to={"/products"}>Servicios/packs</Link>
             </Nav.Link>
             <Nav.Link>
-              <Link to={"/about"}>Acerca de mi</Link>
+              <Link to={"/about"}>Conocer más</Link>
+            </Nav.Link>
+            <Nav.Link>
+              <Link to={"/login"}>Iniciar sesión </Link>
             </Nav.Link>
             <Nav.Link className="perfil">
               <Link to={"/profile"}>

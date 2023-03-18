@@ -7,6 +7,7 @@ import Slider from "../Tools/Carousel/Slider";
 import Accordion from "react-bootstrap/Accordion";
 import { Link } from "react-router-dom";
 import Header from "../Header/Header";
+import curvaHome from "./curva-home.png";
 
 const Home = () => {
   return (
@@ -27,13 +28,7 @@ const Home = () => {
         </article>
       </section>
       <div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path
-            fill="#223378"
-            fill-opacity="1"
-            d="M0,32L60,48C120,64,240,96,360,96C480,96,600,64,720,90.7C840,117,960,203,1080,202.7C1200,203,1320,117,1380,74.7L1440,32L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-          ></path>
-        </svg>
+        <img className="curva-home" src={curvaHome} alt="separador curvado" />
       </div>
       <aside className="apartado">
         <Accordion className="acordeon">
@@ -82,11 +77,11 @@ const Home = () => {
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-          <div className="div-slider">
-        <section className="seccion-slider">
+        <div className="div-slider">
+          <section className="seccion-slider">
             <Slider />
-        </section>
-          </div>
+          </section>
+        </div>
       </aside>
 
       <Link to={"/about"} className="link-button">
