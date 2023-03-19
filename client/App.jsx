@@ -10,6 +10,7 @@ import About from "./components/About/About";
 import Checkout from "./components/Checkout/Checkout";
 import Products from "./components/Products/Products";
 import CreateProduct from "./components/Admin/CreateProduct";
+import ProductOne from "./components/ProductOne/ProductOne";
 
 
 
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
   {
     path: "/products",
     element: <Products />,
+  },
+  {
+    path: "/products/:nombre",
+    element: <ProductOne />,
   },
   {
     path: "/profile",

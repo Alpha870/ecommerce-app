@@ -2,9 +2,13 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import "./Boton.css";
 
-const Boton = ({height, texto}) => {
+const Boton = ({ type, height, texto }) => {
   return (
-    <Button style={{ height:`${height}`, width: "auto" }} className="boton">
+    <Button
+      type={type}
+      style={{ height: `${height}`, width: "auto" }}
+      className="boton"
+    >
       {texto}
     </Button>
   );

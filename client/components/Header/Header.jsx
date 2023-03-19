@@ -32,7 +32,7 @@ const Header = () => {
           </Container>
         </Navbar>
 
-        <Offcanvas className="lateral" show={show} onHide={handleClose}>
+        <Offcanvas className="lateral" placement="start" show={show} onHide={handleClose}>
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>
               <Link to={"/"}>
@@ -40,6 +40,7 @@ const Header = () => {
               </Link>
             </Offcanvas.Title>
           </Offcanvas.Header>
+          <Offcanvas.Body>
           <Nav className="showList">
             <Nav.Link>
               <Link to={"/products"}>Servicios/packs</Link>
@@ -56,6 +57,7 @@ const Header = () => {
               </Link>
             </Nav.Link>
           </Nav>
+          </Offcanvas.Body>
         </Offcanvas>
       </header>
     </>

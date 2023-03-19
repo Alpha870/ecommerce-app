@@ -12,10 +12,37 @@ import Boton from "../Tools/Boton/Boton";
 const Login = () => {
   const [register, setRegister] = useState(true);
 
+  const [formUser, setFormUser] = useState({
+    nombre: "",
+    telefono: "",
+    email: "",
+    password: "",
+  });
+  const productoInicio = {
+    nombre: "",
+    telefono: "",
+    email: "",
+    password: "",
+  };
+
+  //****CREAR****/
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setFormUser({ ...formUser, [name]: value });
+    // console.log(formUser);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formUser);
+    setFormUser(productoInicio);
+  };
+
   return (
     <section className="section-login">
       <Header />
       <article className="article-login">
+        
         {/* Si esta registrado ↓↓ */}
         {register && (
           <Card className="card-login">
@@ -24,14 +51,23 @@ const Login = () => {
             <Card.Body>
               <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Control type="email" placeholder="Correo Electronico" required/>
+                  <Form.Control
+                    type="email"
+                    placeholder="Correo Electronico"
+                    required
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Control type="password" placeholder="Contraseña" required/>
+                  <Form.Control
+                    type="password"
+                    placeholder="Contraseña"
+                    required
+                  />
                   <Form.Text className="text-muted">
                     No tengo cuenta necesito
                     <button
+                      type="button"
                       className="button-nada"
                       onClick={() => setRegister(false)}
                     >
@@ -39,7 +75,11 @@ const Login = () => {
                     </button>
                   </Form.Text>
                 </Form.Group>
-                <Boton height={"3rem"} texto={"Iniciar Sesión"} />
+                <Boton
+                  type={"submit"}
+                  height={"3rem"}
+                  texto={"Iniciar Sesión"}
+                />
               </Form>
             </Card.Body>
             <div className="img-card-login">
@@ -54,22 +94,53 @@ const Login = () => {
             <h4>¿Aún no tienes una cuenta?</h4>
             <h5>Registrate para que puedas iniciar sesión</h5>
             <Card.Body>
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicName">
-                  <Form.Control type="text" placeholder="Nombre y apellidos" required/>
+                  <Form.Control
+                    type="text"
+                    placeholder="Nombre y apellidos"
+                    name="nombre"
+                    value={formUser.nombre}
+                    onChange={handleChange}
+                    required
+                  />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Control type="number" placeholder="Teléfono" required/>
+
+                <Form.Group className="mb-3" controlId="formBasicTelefon">
+                  <Form.Control
+                    type="number"
+                    placeholder="Teléfono"
+                    name="telefono"
+                    value={formUser.telefono}
+                    onChange={handleChange}
+                    required
+                  />
                 </Form.Group>
+
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Control type="email" placeholder="Correo Electronico" required/>
+                  <Form.Control
+                    type="email"
+                    placeholder="Correo Electronico"
+                    name="email"
+                    value={formUser.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Control type="password" placeholder="Contraseña" required/>
+                  <Form.Control
+                    type="password"
+                    placeholder="Contraseña"
+                    name="password"
+                    value={formUser.password}
+                    onChange={handleChange}
+                    required
+                  />
                   <Form.Text className="text-muted">
                     Ya tengo cuenta quiero
                     <button
+                      type="button"
                       className="button-nada"
                       onClick={() => setRegister(true)}
                     >
@@ -77,7 +148,7 @@ const Login = () => {
                     </button>
                   </Form.Text>
                 </Form.Group>
-                <Boton height={"3rem"} texto={"Registrarme"} />
+                <Boton type={"submit"} height={"3rem"} texto={"Registrarme"} />
               </Form>
             </Card.Body>
             <div className="img-card-login">

@@ -129,11 +129,11 @@ const About = () => {
         <h1 className="titulo-pilares">Cuando desconecto...</h1>
         <h5 className="descrip-about-desconecto">
           Fuera del trabajo, disfruto de otras de mis 2 grandes pasiones mi
-          familia y es estar rodeado de naturaleza y poder escaparme a hacer
-          trekking hace que mis pilas se recarguen.
+          familia/amigos y el trekking, poder estar rodeado de naturaleza y escaparme a hacer
+          una ruta hace que mis pilas se recarguen.
         </h5>
         <h5 className="descrip-about-desconecto">
-          Siempre acompañado de una buena taza de café...
+          Siempre rodeado de buena compañia y con una buena taza de café...
         </h5>
         <div className="div-imagenes-desconecto">
           <figure className="figure-desc">
