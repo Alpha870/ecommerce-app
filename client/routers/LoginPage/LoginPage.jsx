@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
+import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/Header";
 import "./login.css";
 import trabajar from "./cohete.png";
 import lapiz from "./lapiz.png";
-import Boton from "../Tools/Boton/Boton";
+import Boton from "../../components/Boton/Boton";
 
-const Login = () => {
+const LoginPage = () => {
   const [register, setRegister] = useState(true);
 
   const [formUser, setFormUser] = useState({
@@ -162,4 +161,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

@@ -1,15 +1,15 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Footer from "../Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import designer from "./programador-sf.png";
 import "./Home.css";
-import Slider from "../Tools/Carousel/Slider";
+import Slider from "../../components/Carousel/Slider";
 import Accordion from "react-bootstrap/Accordion";
 import { Link } from "react-router-dom";
-import Header from "../Header/Header";
+import Header from "../../components/Header/Header";
 import curvaHome from "./curva-home.png";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <section>
       <section className="seccion-header-article">
@@ -93,4 +93,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

@@ -1,11 +1,11 @@
 import React from "react";
 import "./products.css";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-import CardProduct from "../Tools/CardProduct/CardProduct";
-import img from "../Tools/Carousel/img/Data.png";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import CardProduct from "../../components/CardProduct/CardProduct";
+import img from "../../components/Carousel/img/Data.png";
 
-const Products = () => {
+const ProductsPage = () => {
   return (
     <section className="section-products">
       <Header />
@@ -34,4 +34,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default ProductsPage;

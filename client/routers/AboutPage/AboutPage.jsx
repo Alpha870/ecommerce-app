@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Header from "../Header/Header";
+import Header from "../../components/Header/Header";
 import foto from "./perfil.png";
 import "./About.css";
-import Popup from "../Tools/Popup/Popup";
+import Popup from "../../components/PopUp/PopUp";
 import pilar from "./pilar-sf.png";
-import Footer from "../Footer/Footer";
+import Footer from "../../components/Footer/Footer";
 import cola from "./cola.png";
 import cima from "./cima.jpg";
 import separador from "./separador.png";
 
-const About = () => {
+const AboutPage = () => {
   const [temp, setTemp] = useState(null);
 
   const tiempo = async () => {
@@ -124,13 +124,13 @@ const About = () => {
       </aside>
 
       <section>
-        <img style={{width:'100%'}} src={separador} alt="separador " />
+        <img style={{ width: "100%" }} src={separador} alt="separador " />
 
         <h1 className="titulo-pilares">Cuando desconecto...</h1>
         <h5 className="descrip-about-desconecto">
           Fuera del trabajo, disfruto de otras de mis 2 grandes pasiones mi
-          familia/amigos y el trekking, poder estar rodeado de naturaleza y escaparme a hacer
-          una ruta hace que mis pilas se recarguen.
+          familia/amigos y el trekking, poder estar rodeado de naturaleza y
+          escaparme a hacer una ruta hace que mis pilas se recarguen.
         </h5>
         <h5 className="descrip-about-desconecto">
           Siempre rodeado de buena compañia y con una buena taza de café...
@@ -155,4 +155,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutPage;

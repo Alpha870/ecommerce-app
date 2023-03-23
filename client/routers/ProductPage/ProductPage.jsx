@@ -1,14 +1,14 @@
 import React from "react";
 import "./productOne.css";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import task from "./task.png";
 import { Link } from "react-router-dom";
 
-const ProductOne = () => {
+const ProductPage = () => {
   return (
     <section>
       <Header />
@@ -40,4 +40,4 @@ const ProductOne = () => {
   );
 };
 
-export default ProductOne;
+export default ProductPage;

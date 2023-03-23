@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import "./profile.css";
-import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import Boton from "../../components/Boton/Boton";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 import interfaz from "./interfaz.png";
 import settings from "./settings.png";
-import Boton from "../Tools/Boton/Boton";
 import { Link } from "react-router-dom";
 
-const Profile = () => {
+const ProfilePage = () => {
   const [edit, setEdit] = useState(false);
 
   const [formUser, setFormUser] = useState({
@@ -133,4 +133,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;
