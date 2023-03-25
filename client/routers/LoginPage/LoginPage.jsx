@@ -25,7 +25,7 @@ const LoginPage = () => {
   };
 
   //****CREAR****/
-  function handleChange(e) {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormUser({ ...formUser, [name]: value });
     // console.log(formUser);
