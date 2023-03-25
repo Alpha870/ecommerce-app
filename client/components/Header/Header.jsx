@@ -6,8 +6,10 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import Logo from "./codework-sfr.png";
 import "./Header.css";
+import useAuth from "../../auth/useAuth";
 
 const Header = () => {
+  const { user } = useAuth();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -32,7 +34,12 @@ const Header = () => {
           </Container>
         </Navbar>
 
-        <Offcanvas className="lateral" placement="start" show={show} onHide={handleClose}>
+        <Offcanvas
+          className="lateral"
+          placement="start"
+          show={show}
+          onHide={handleClose}
+        >
           <Offcanvas.Header closeButton>
             <Offcanvas.Title>
               <Link to={"/"}>
@@ -41,22 +48,25 @@ const Header = () => {
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
-          <Nav className="showList">
-            <Nav.Link>
-              <Link to={"/products"}>Servicios/packs</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to={"/about"}>Conocer más</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to={"/login"}>Iniciar sesión </Link>
-            </Nav.Link>
-            <Nav.Link className="perfil">
-              <Link to={"/profile"}>
-                <i className="bx bxs-user-detail bx-sm"></i>
-              </Link>
-            </Nav.Link>
-          </Nav>
+            <Nav className="showList">
+              <Nav.Link>
+                <Link to={"/products"}>Servicios/packs</Link>
+              </Nav.Link>
+              <Nav.Link>
+                <Link to={"/about"}>Conocer más</Link>
+              </Nav.Link>
+              {!user ? (
+                <Nav.Link>
+                  <Link to={"/login"}>Iniciar sesión </Link>
+                </Nav.Link>
+              ) : (
+                <>
+                  <Nav.Link className="perfil">
+                    <Link to={"/profile"}>Mi perfil </Link>
+                  </Nav.Link>
+                </>
+              )}
+            </Nav>
           </Offcanvas.Body>
         </Offcanvas>
       </header>
