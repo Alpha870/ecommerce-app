@@ -1,19 +1,24 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose')
 const { Schema } = mongoose;
 
-const UserSchema = new Schema(
+const ProductSchema = new Schema(
   {
     nombre: {
       type: String,
     },
-    telefono: {
-      type: Number,
-    },
-    email: {
+    horas: {
       type: String,
-      unique: true, //valor debe ser único dentro de la colección.
     },
-    password: {
+    precios: {
+      type: String,
+    },
+    pagos: {
+      type: String,
+    },
+    caracteristicas: {
+      type: String,
+    },
+    terminado: {
       type: String,
     },
   },
@@ -23,6 +28,6 @@ const UserSchema = new Schema(
   }
 );
 
-const Users = mongoose.model("users", UserSchema);
+const ProductModel = mongoose.model("products", ProductSchema);
 
-export default Users;
+module.exports = ProductModel

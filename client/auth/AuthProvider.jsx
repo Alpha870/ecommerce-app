@@ -5,12 +5,13 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(false);
 
-  const isLogged = () => user
+  const isLogged = () => user;
+
   
 
   const contextValue = {
     user,
-    isLogged
+    isLogged,
   };
 
   return (

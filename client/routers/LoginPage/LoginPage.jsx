@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
 import Footer from "../../components/Footer/Footer";
@@ -11,13 +12,13 @@ import Boton from "../../components/Boton/Boton";
 const LoginPage = () => {
   const [register, setRegister] = useState(true);
 
-  const [formUser, setFormUser] = useState({
+  const [dataUser, setDataUser] = useState({
     nombre: "",
     telefono: "",
     email: "",
     password: "",
   });
-  const productoInicio = {
+  const initialUser = {
     nombre: "",
     telefono: "",
     email: "",
@@ -27,21 +28,25 @@ const LoginPage = () => {
   //****CREAR****/
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormUser({ ...formUser, [name]: value });
+    setDataUser({ ...dataUser, [name]: value });
     // console.log(formUser);
-  }
+  };
 
-  const handleSubmit = (e) => {
+  const saveUser = async (e) => {
     e.preventDefault();
-    console.log(formUser);
-    setFormUser(productoInicio);
+    const url = "http://localhost:3000/api/users";
+    const result = await axios.post(url, dataUser);
+    if (result.status === 200) {
+      setDataUser(initialUser);
+    } else {
+      console.log('error en el registro')
+    }
   };
 
   return (
     <section className="section-login">
       <Header />
       <article className="article-login">
-        
         {/* Si esta registrado ↓↓ */}
         {register && (
           <Card className="card-login">
@@ -93,13 +98,13 @@ const LoginPage = () => {
             <h4>¿Aún no tienes una cuenta?</h4>
             <h5>Registrate para que puedas iniciar sesión</h5>
             <Card.Body>
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={saveUser}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                   <Form.Control
                     type="text"
                     placeholder="Nombre y apellidos"
                     name="nombre"
-                    value={formUser.nombre}
+                    value={dataUser.nombre}
                     onChange={handleChange}
                     required
                   />
@@ -110,7 +115,7 @@ const LoginPage = () => {
                     type="number"
                     placeholder="Teléfono"
                     name="telefono"
-                    value={formUser.telefono}
+                    value={dataUser.telefono}
                     onChange={handleChange}
                     required
                   />
@@ -121,7 +126,7 @@ const LoginPage = () => {
                     type="email"
                     placeholder="Correo Electronico"
                     name="email"
-                    value={formUser.email}
+                    value={dataUser.email}
                     onChange={handleChange}
                     required
                   />
@@ -132,7 +137,7 @@ const LoginPage = () => {
                     type="password"
                     placeholder="Contraseña"
                     name="password"
-                    value={formUser.password}
+                    value={dataUser.password}
                     onChange={handleChange}
                     required
                   />

@@ -20,14 +20,14 @@ const ProfilePage = () => {
     email: "",
     password: "",
   });
-  const productoInicio = {
+  const initialUser = {
     nombre: "",
     telefono: "",
     email: "",
     password: "",
   };
 
-  //****CREAR****/
+  //****EDITAR****/
   function handleChange(e) {
     const { name, value } = e.target;
     setFormUser({ ...formUser, [name]: value });
@@ -37,7 +37,7 @@ const ProfilePage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formUser);
-    setFormUser(productoInicio);
+    setFormUser(initialUser);
     setEdit(false);
   };
 

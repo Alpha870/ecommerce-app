@@ -1,9 +1,8 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import { dbConnect } from "../config/mongo.js";
-import routeRegister from '../routes/users/register.js'
-
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const dbConnect = require("./config/mongo.js");
+const routerUser = require('./apis/users/index.js')
 
 //CREAR INSTANCIA
 const app = express();
@@ -18,15 +17,11 @@ dotenv.config();
 dbConnect();
 
 //bodyParser
-app.use(express.json())
-app.use(express.urlencoded({extended: 'true'}))
+app.use(express.json());
+app.use(express.urlencoded({ extended: "true" }));
 
-//MODEL
-
-//ROUTES
-
-//Rutas usuarios
-app.use('/api', routeRegister)
+//RUTAS
+app.use(routerUser)
 
 
 //escuchar solicitudes

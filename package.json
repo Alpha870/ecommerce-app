@@ -2,7 +2,7 @@
   "name": "ecommerce-app",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "server": "nodemon ./server/server.js",
     "start": "vite --host",
