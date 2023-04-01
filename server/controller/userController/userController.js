@@ -1,8 +1,7 @@
 const UsersModel = require("../../models/users.js");
 
-
-const getUser = async () => {
-  return await UsersModel.find({});
+const getUser = async (dataEmail) => {
+  return await UsersModel.findOne({dataEmail});
 };
 
 const createUser = async (body) => {
@@ -11,12 +10,25 @@ const createUser = async (body) => {
   return newUser;
 };
 
-const existsUser = async (dataEmail) => {
-  return await UsersModel.exists({ email : `${dataEmail}`})
+const editUser = async (bodyUser, bodyEmail) => {
+  const dataEmail= bodyEmail;
+  const dataUser= bodyUser;
+  await UsersModel.findOneAndUpdate({dataEmail}, dataUser);
+  return dataUser
 };
+
+const deleteUser = async (dataEmail) => {
+  await UsersModel.deleteOne({dataEmail})
+}
+
+// const existsUser = async (dataEmail) => {
+//   return await UsersModel.exists({ email: `${dataEmail}` });
+// };
 
 module.exports = {
   getUser,
   createUser,
-  existsUser,
+  editUser,
+  deleteUser
+  // existsUser,
 };

@@ -10,7 +10,9 @@ import lapiz from "./lapiz.png";
 import Boton from "../../components/Boton/Boton";
 
 const LoginPage = () => {
-  const [register, setRegister] = useState(true);
+
+
+  const [register, setRegister] = useState(true)
 
   const [dataUser, setDataUser] = useState({
     nombre: "",
@@ -29,17 +31,16 @@ const LoginPage = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDataUser({ ...dataUser, [name]: value });
-    // console.log(formUser);
   };
 
   const saveUser = async (e) => {
     e.preventDefault();
-    const url = "http://localhost:3000/api/users";
+    const url = `${import.meta.env.VITE_BASE_URL}users/create`;
     const result = await axios.post(url, dataUser);
     if (result.status === 200) {
       setDataUser(initialUser);
     } else {
-      console.log('error en el registro')
+      console.log("error en el registro");
     }
   };
 

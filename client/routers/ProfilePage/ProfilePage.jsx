@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import useAuth from "../../auth/useAuth";
 import "./profile.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -12,14 +14,18 @@ import settings from "./settings.png";
 import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
+  const { user } = useAuth();
+
   const [edit, setEdit] = useState(false);
 
   const [formUser, setFormUser] = useState({
+    _id: "",
     nombre: "",
     telefono: "",
     email: "",
     password: "",
   });
+
   const initialUser = {
     nombre: "",
     telefono: "",
@@ -28,17 +34,47 @@ const ProfilePage = () => {
   };
 
   //****EDITAR****/
-  function handleChange(e) {
+  const handleChange = (e) => {
     const { name, value } = e.target;
     setFormUser({ ...formUser, [name]: value });
-    // console.log(formUser);
-  }
+  };
 
-  const handleSubmit = (e) => {
+  
+  const getUser = async () => {
+    const url = `${import.meta.env.VITE_BASE_URL}users/get`;
+    const result = await axios.get(url, formUser.email);
+    const dataUser = result.data.showUser;
+    modifyUser(dataUser);
+  };
+
+  const editUser = async (e) => {
     e.preventDefault();
-    console.log(formUser);
-    setFormUser(initialUser);
+    const url = `${import.meta.env.VITE_BASE_URL}users/edit`;
+    const result = await axios.put(url, { formUser });
+    const dataUser = result.data.newEditUser;
+    modifyUser(dataUser);
     setEdit(false);
+    getUser()
+  };
+  
+  useEffect(() => {
+    getUser();
+  }, []);
+  
+  const modifyUser = (dataUser) => {
+    setFormUser({
+      nombre: dataUser.nombre,
+      telefono: dataUser.telefono,
+      email: dataUser.email,
+      password: dataUser.password,
+    });
+  };
+   
+  //****ELIMINAR****/
+  const deleteUser = async () => {
+    const url = `${import.meta.env.VITE_BASE_URL}users/delete`;
+    await axios.delete(url, formUser.email);
+    useAuth(false)
   };
 
   return (
@@ -49,25 +85,25 @@ const ProfilePage = () => {
           <Card className="card-profile">
             <img src={interfaz} alt="interface perfil" />
             <Card.Body>
-              <Card.Header>Nombre y apellidos</Card.Header>
-              <Card.Header>Teléfono</Card.Header>
-              <Card.Header>Correo electrónico</Card.Header>
-              <Card.Header>Password</Card.Header>
+              <Card.Header>{formUser.nombre}</Card.Header>
+              <Card.Header>{formUser.telefono}</Card.Header>
+              <Card.Header>{formUser.email}</Card.Header>
+              <Card.Header>{formUser.password}</Card.Header>
             </Card.Body>
             <Card.Body className="body-buttons">
               <Button variant="outline-warning" onClick={() => setEdit(true)}>
                 Editar
               </Button>
-              <Button variant="outline-danger">Eliminar</Button>
+              <Button variant="outline-danger" onClick={deleteUser}>Eliminar</Button>
             </Card.Body>
-            
+
             <Card.Body className="div-button-profile">
-              <Link to={'/orders'}>
-              <Boton
-                type={"button"}
-                height={"3rem"}
-                texto={"Ir a mis pedidos"}
-              />
+              <Link to={"/orders"}>
+                <Boton
+                  type={"button"}
+                  height={"3rem"}
+                  texto={"Ir a mis pedidos"}
+                />
               </Link>
             </Card.Body>
           </Card>
@@ -76,7 +112,7 @@ const ProfilePage = () => {
           <Card className="card-profile">
             <img src={settings} alt="interface perfil" />
             <Card.Body>
-              <Form onSubmit={handleSubmit}>
+              <Form onSubmit={editUser}>
                 <Form.Group className="mb-3" controlId="formBasicName">
                   <Form.Control
                     type="text"
