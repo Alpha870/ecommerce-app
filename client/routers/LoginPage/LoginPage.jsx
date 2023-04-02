@@ -11,7 +11,7 @@ import lapiz from "./lapiz.png";
 import Boton from "../../components/Boton/Boton";
 
 const LoginPage = () => {
-  const {setUser} = useAuth()
+  const {setUser, setAdmin} = useAuth()
   // estado para saber si quiere registrarse
   const [register, setRegister] = useState(false);
 
@@ -44,8 +44,12 @@ const LoginPage = () => {
     e.preventDefault();
     const url = `${import.meta.env.VITE_BASE_URL}users/login`;
     const result = await axios.post(url, dataLogin);
+    
     try {
       const res = result.data.user
+      if (res.password === import.meta.env.VITE_ADMIN_PASS) {
+        setAdmin(true);
+      }
       setUser({
         nombre: res.nombre,
         telefono: res.telefono,

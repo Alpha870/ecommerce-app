@@ -8,7 +8,7 @@ const { getUser, createUser, editUser, deleteUser, existsUser } =
 
 router.get("/users/get", async (req, res) => {
   const dataEmail = req.body.email;
-  console.log(dataEmail, 'estoy despues de traer body')
+  console.log(dataEmail, "estoy despues de traer body");
   try {
     const showUser = await getUser(dataEmail);
     res
@@ -71,8 +71,15 @@ router.post("/users/login", async (req, res) => {
         .status(401)
         .send("Correo electrónico o contraseña incorrectos");
     }
-    res.send({ user });
-    console.log({user})
+    // si el password del admin obtenido en el controller
+    // es igual al password enviado por el body ↓↓
+    if (user.password === process.env.ADMIN_PASS) {
+      res.send({ user });
+      console.log({ user }, "vengo del admin");
+    } else {
+      res.send({ user });
+      console.log({ user }, "vengo del usuario normal");
+    }
   } catch (error) {
     console.log(error);
     res.status(500).send("Error de inicio de sesión");

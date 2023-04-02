@@ -22,9 +22,11 @@ const Header = () => {
             <Navbar.Brand onClick={handleShow}>
               <i className="bx bx-menu bx-md"></i>
             </Navbar.Brand>
-            <Link to={"/"} className="container-logo">
-              <img src={Logo} alt="logo-empresa" className="logo" />
-            </Link>
+            <div className="container-logo">
+              <Link to={"/"}>
+                <img src={Logo} alt="logo-empresa" className="logo" />
+              </Link>
+            </div>
             <Navbar.Brand>
               <Link to={"/checkout"}>
                 <i className="bx bx-cart bx-md"></i>
