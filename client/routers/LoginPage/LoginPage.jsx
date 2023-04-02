@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useAuth from "../../auth/useAuth";
 import axios from "axios";
 import Form from "react-bootstrap/Form";
 import Card from "react-bootstrap/Card";
@@ -10,9 +11,14 @@ import lapiz from "./lapiz.png";
 import Boton from "../../components/Boton/Boton";
 
 const LoginPage = () => {
+  const {setUser} = useAuth()
+  // estado para saber si quiere registrarse
+  const [register, setRegister] = useState(false);
 
-
-  const [register, setRegister] = useState(true)
+  const [dataLogin, setDataLogin] = useState({
+    email: "",
+    password: "",
+  });
 
   const [dataUser, setDataUser] = useState({
     nombre: "",
@@ -20,6 +26,7 @@ const LoginPage = () => {
     email: "",
     password: "",
   });
+
   const initialUser = {
     nombre: "",
     telefono: "",
@@ -27,8 +34,33 @@ const LoginPage = () => {
     password: "",
   };
 
+  //****LOGIN****/
+  const changeLogin = (e) => {
+    const { name, value } = e.target;
+    setDataLogin({ ...dataLogin, [name]: value });
+  };
+
+  const loginUser = async (e) => {
+    e.preventDefault();
+    const url = `${import.meta.env.VITE_BASE_URL}users/login`;
+    const result = await axios.post(url, dataLogin);
+    try {
+      const res = result.data.user
+      setUser({
+        nombre: res.nombre,
+        telefono: res.telefono,
+        email: res.email,
+        password: res.password,
+      });
+      
+    } catch (error) {
+      console.log("error en el registro", error);
+    }
+  };
+  
+
   //****CREAR****/
-  const handleChange = (e) => {
+  const changeRegister = (e) => {
     const { name, value } = e.target;
     setDataUser({ ...dataUser, [name]: value });
   };
@@ -38,7 +70,7 @@ const LoginPage = () => {
     const url = `${import.meta.env.VITE_BASE_URL}users/create`;
     const result = await axios.post(url, dataUser);
     if (result.status === 200) {
-      setDataUser(initialUser);
+      setUser(dataUser);
     } else {
       console.log("error en el registro");
     }
@@ -48,17 +80,20 @@ const LoginPage = () => {
     <section className="section-login">
       <Header />
       <article className="article-login">
-        {/* Si esta registrado ↓↓ */}
-        {register && (
+        {/* No quiere registrarse ↓↓ */}
+        {!register && (
           <Card className="card-login">
             <h4>¿Ya tienes una cuenta?</h4>
             <h5>Inicia sesión para seguir</h5>
             <Card.Body>
-              <Form>
+              <Form onSubmit={loginUser}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Control
                     type="email"
                     placeholder="Correo Electronico"
+                    name="email"
+                    value={dataLogin.email}
+                    onChange={changeLogin}
                     required
                   />
                 </Form.Group>
@@ -67,6 +102,9 @@ const LoginPage = () => {
                   <Form.Control
                     type="password"
                     placeholder="Contraseña"
+                    name="password"
+                    value={dataLogin.password}
+                    onChange={changeLogin}
                     required
                   />
                   <Form.Text className="text-muted">
@@ -74,7 +112,7 @@ const LoginPage = () => {
                     <button
                       type="button"
                       className="button-nada"
-                      onClick={() => setRegister(false)}
+                      onClick={() => setRegister(true)}
                     >
                       registrarme
                     </button>
@@ -93,8 +131,8 @@ const LoginPage = () => {
           </Card>
         )}
 
-        {/* No esta registrado ↓↓ */}
-        {!register && (
+        {/* Quiere registrarse ↓↓ */}
+        {register && (
           <Card className="card-login">
             <h4>¿Aún no tienes una cuenta?</h4>
             <h5>Registrate para que puedas iniciar sesión</h5>
@@ -106,7 +144,7 @@ const LoginPage = () => {
                     placeholder="Nombre y apellidos"
                     name="nombre"
                     value={dataUser.nombre}
-                    onChange={handleChange}
+                    onChange={changeRegister}
                     required
                   />
                 </Form.Group>
@@ -117,7 +155,7 @@ const LoginPage = () => {
                     placeholder="Teléfono"
                     name="telefono"
                     value={dataUser.telefono}
-                    onChange={handleChange}
+                    onChange={changeRegister}
                     required
                   />
                 </Form.Group>
@@ -128,7 +166,7 @@ const LoginPage = () => {
                     placeholder="Correo Electronico"
                     name="email"
                     value={dataUser.email}
-                    onChange={handleChange}
+                    onChange={changeRegister}
                     required
                   />
                 </Form.Group>
@@ -139,7 +177,7 @@ const LoginPage = () => {
                     placeholder="Contraseña"
                     name="password"
                     value={dataUser.password}
-                    onChange={handleChange}
+                    onChange={changeRegister}
                     required
                   />
                   <Form.Text className="text-muted">
@@ -147,7 +185,7 @@ const LoginPage = () => {
                     <button
                       type="button"
                       className="button-nada"
-                      onClick={() => setRegister(true)}
+                      onClick={() => setRegister(false)}
                     >
                       Iniciar Sesión
                     </button>

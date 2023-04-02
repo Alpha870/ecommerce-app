@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import useAuth from "../../auth/useAuth";
+import axios from "axios";
 import "./profile.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
@@ -14,17 +14,11 @@ import settings from "./settings.png";
 import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
-  const { user } = useAuth();
+  const { user, setUser } = useAuth();
 
   const [edit, setEdit] = useState(false);
 
-  const [formUser, setFormUser] = useState({
-    _id: "",
-    nombre: "",
-    telefono: "",
-    email: "",
-    password: "",
-  });
+  const [formUser, setFormUser] = useState( user );
 
   const initialUser = {
     nombre: "",
@@ -39,11 +33,11 @@ const ProfilePage = () => {
     setFormUser({ ...formUser, [name]: value });
   };
 
-  
   const getUser = async () => {
     const url = `${import.meta.env.VITE_BASE_URL}users/get`;
-    const result = await axios.get(url, formUser.email);
+    const result = await axios.get(url, user);
     const dataUser = result.data.showUser;
+    console.log(dataUser);
     modifyUser(dataUser);
   };
 
@@ -53,14 +47,11 @@ const ProfilePage = () => {
     const result = await axios.put(url, { formUser });
     const dataUser = result.data.newEditUser;
     modifyUser(dataUser);
+    setUser(formUser)
     setEdit(false);
-    getUser()
-  };
-  
-  useEffect(() => {
     getUser();
-  }, []);
-  
+  };
+
   const modifyUser = (dataUser) => {
     setFormUser({
       nombre: dataUser.nombre,
@@ -69,12 +60,12 @@ const ProfilePage = () => {
       password: dataUser.password,
     });
   };
-   
+
   //****ELIMINAR****/
   const deleteUser = async () => {
     const url = `${import.meta.env.VITE_BASE_URL}users/delete`;
     await axios.delete(url, formUser.email);
-    useAuth(false)
+    setUser(false);
   };
 
   return (
@@ -94,7 +85,9 @@ const ProfilePage = () => {
               <Button variant="outline-warning" onClick={() => setEdit(true)}>
                 Editar
               </Button>
-              <Button variant="outline-danger" onClick={deleteUser}>Eliminar</Button>
+              <Button variant="outline-danger" onClick={deleteUser}>
+                Eliminar
+              </Button>
             </Card.Body>
 
             <Card.Body className="div-button-profile">

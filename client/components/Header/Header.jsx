@@ -9,7 +9,7 @@ import "./Header.css";
 import useAuth from "../../auth/useAuth";
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, admin } = useAuth();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -61,9 +61,22 @@ const Header = () => {
                 </Nav.Link>
               ) : (
                 <>
-                  <Nav.Link className="perfil">
-                    <Link to={"/profile"}>Mi perfil </Link>
-                  </Nav.Link>
+                  {admin ? (
+                    <div>
+                      <Nav.Link className="perfil">
+                        <Link to={"/profile"}>Mi perfil </Link>
+                      </Nav.Link>
+                      <Nav.Link>
+                        <Link to={"/admin/create/product"}>
+                          Crear productos
+                        </Link>
+                      </Nav.Link>
+                    </div>
+                  ) : (
+                    <Nav.Link className="perfil">
+                      <Link to={"/profile"}>Mi perfil </Link>
+                    </Nav.Link>
+                  )}
                 </>
               )}
             </Nav>

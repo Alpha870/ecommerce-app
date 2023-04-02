@@ -11,9 +11,9 @@ const createUser = async (body) => {
 };
 
 const editUser = async (bodyUser, bodyEmail) => {
-  const dataEmail= bodyEmail;
+  const dataEmail = { email: bodyEmail };
   const dataUser= bodyUser;
-  await UsersModel.findOneAndUpdate({dataEmail}, dataUser);
+  await UsersModel.findOneAndUpdate(dataEmail, dataUser);
   return dataUser
 };
 
@@ -21,14 +21,14 @@ const deleteUser = async (dataEmail) => {
   await UsersModel.deleteOne({dataEmail})
 }
 
-// const existsUser = async (dataEmail) => {
-//   return await UsersModel.exists({ email: `${dataEmail}` });
-// };
+const existsUser = async (email) => {
+ return await UsersModel.findOne({email});
+};
 
 module.exports = {
   getUser,
   createUser,
   editUser,
-  deleteUser
-  // existsUser,
+  deleteUser,
+  existsUser
 };

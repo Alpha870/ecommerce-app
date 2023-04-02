@@ -3,20 +3,23 @@ import { createContext, useState } from "react";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(
-    // {
-    // nombre: "Maria",
-    // telefono: 158795,
-    // email: "test@test.com",
-    // password: "156894",
-    // }
-  );
+  const [user, setUser] = useState(false);
 
+  const [admin, setAdmin] = useState(false);
+
+  const isAdmin = () => {
+    if (user.password === import.meta.env.VITE_ADMIN_PASS) {
+      setAdmin(true);
+    }
+  };
   const isLogged = () => user;
 
   const contextValue = {
     user,
+    admin,
+    setUser,
     isLogged,
+    isAdmin,
   };
 
   return (

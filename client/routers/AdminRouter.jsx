@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import useAuth from "../auth/useAuth";
 
 const AdminRouter = () => {
-  const [admin, setAdmin] = useState(true);
-
-  return <>{admin ? <Outlet /> : <Navigate to="/login" />}</>;
+  const {admin} = useAuth()
+  return <>{admin ? <Outlet /> : <Navigate to="/" />}</>;
 };
 
 export default AdminRouter;
