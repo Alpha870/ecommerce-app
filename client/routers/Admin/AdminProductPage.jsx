@@ -9,7 +9,6 @@ import ListGroup from "react-bootstrap/ListGroup";
 const AdminProductPage = () => {
   const [edit, setEdit] = useState(false);
   const [showProduct, setShowProduct] = useState([]);
-  console.log(showProduct);
 
   const [formProduct, setFormproduct] = useState({
     id: "",
@@ -39,7 +38,6 @@ const AdminProductPage = () => {
   const getAllProducts = async () => {
     const url = `${import.meta.env.VITE_BASE_URL}products/getAll`;
     const result = await axios.get(url);
-    console.log(result);
     const res = result.data.allProducts;
     setShowProduct(res);
   };
@@ -54,38 +52,33 @@ const AdminProductPage = () => {
     const url = `${import.meta.env.VITE_BASE_URL}/products/create`;
     const result = await axios.post(url, formProduct);
     if (result.status === 200) {
-      console.log(result);
+      getAllProducts()
     } else {
       console.log("error en el registro");
     }
   };
 
   //****EDITAR****/
-  const editProduct = async (e) => {
-    e.preventDefault();
-    const url = `${import.meta.env.VITE_BASE_URL}products/edit`;
-    const result = await axios.put(url, { formUser });
-    const dataUser = result.data.newEditUser;
-    modifyUser(dataUser);
-    // setUser(formUser);
-    // setEdit(false);
-    // getUser();
+
+  const getProduct = async (id) => {
+    const url = `${import.meta.env.VITE_BASE_URL}products/get/${id}`;
+    const result = await axios.get(url);
+    const dataProduct = result.data.showProduct;
+    setFormproduct(dataProduct);
   };
 
-  const getProduct = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/get`;
-    const result = await axios.get(url, user);
-    const dataUser = result.data.showUser;
-    console.log(dataUser);
-    // modifyUser(dataUser);
+  const editProduct = async () => {
+    const url = `${import.meta.env.VITE_BASE_URL}products/edit/${formProduct._id}`;
+    await axios.put(url, formProduct);
+    getAllProducts()
   };
 
   //****ELIMINAR****/
 
   const deleteProduct = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/delete`;
-    await axios.delete(url, formUser.email);
-    // setUser(false);
+    const url = `${import.meta.env.VITE_BASE_URL}products/delete/${formProduct._id}`;
+    await axios.delete(url);
+    getAllProducts()
   };
 
   return (
@@ -117,17 +110,29 @@ const AdminProductPage = () => {
                       terminado en: {item.terminado}
                     </ListGroup.Item>
                   </ListGroup>
-                  <Button variant="primary">Guardar el id</Button>
+                  <Button
+                    onClick={() => getProduct(item._id)}
+                    variant="primary"
+                  >
+                    Guardar el id
+                  </Button>
                 </Card.Body>
               </Card>
             </div>
           ))}
       </section>
-      <Form style={{ width: "50%", margin: "0 auto", marginTop: "3rem" }}>
+      <Form
+        style={{
+          width: "50%",
+          margin: "0 auto",
+          marginTop: "3rem",
+          marginBottom: "15rem",
+        }}
+      >
         <h4 style={{ margin: "2rem" }}>PANEL ADMIN CREAR PRODUCTOS</h4>
-        <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
+        <Form.Group className="mb-1">
           <Form.Label>Id</Form.Label>
-          <Form.Control type="text" name="id" value={formProduct.id} disabled />
+          <Form.Control placeholder={formProduct._id} disabled />
         </Form.Group>
         <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
           <Form.Label>Nombre Producto</Form.Label>
@@ -187,11 +192,16 @@ const AdminProductPage = () => {
         <Button type="submit" onClick={saveProduct} className="mt-3 me-5">
           Crear
         </Button>
-        <Button type="submit" variant="warning" className="mt-3 me-5">
+        <Button
+          type="button"
+          onClick={editProduct}
+          variant="warning"
+          className="mt-3 me-5"
+        >
           Editar
         </Button>
         <Button
-          type="submit"
+          type="button"
           onClick={deleteProduct}
           variant="danger"
           className="mt-3"

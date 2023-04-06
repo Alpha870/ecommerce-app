@@ -15,21 +15,20 @@ router.get("/products/getAll", async (req, res) => {
     res
       .status(200)
       .json({ message: "Mostrando usuario correctamente", allProducts });
-    console.log("mostrando usuario", allProducts);
+    // console.log("mostrando usuario", allProducts);
   } catch (error) {
     console.log(error);
   }
 });
 
-router.get("/products/get", async (req, res) => {
-  const dataEmail = req.body.email;
-  console.log(dataEmail, "estoy despues de traer body");
+router.get("/products/get/:id", async (req, res) => {
+  const dataId = req.params.id;
   try {
-    const showUser = await getProduct(dataEmail);
+    const showProduct = await getProduct(dataId);
     res
       .status(200)
-      .json({ message: "Mostrando usuario correctamente", showUser });
-    console.log("mostrando usuario", showUser);
+      .json({ message: "Mostrando producto indiv correctamente", showProduct });
+    // console.log("mostrando producto", showProduct);
   } catch (error) {
     console.log(error);
   }
@@ -46,26 +45,24 @@ router.post("/products/create", async (req, res) => {
   }
 });
 
-router.put("/products/edit", async (req, res) => {
-  const bodyUser = req.body.formUser;
-  const bodyEmail = req.body.formUser.email;
+router.put("/products/edit/:id", async (req, res) => {
+  const dataId = req.params.id;
+  const dataProduct = req.body;
   try {
-    const newEditUser = await editProduct(bodyUser, bodyEmail);
-    res
-      .status(200)
-      .json({ message: "Usuario editado correctamente", newEditUser });
+    const newEditProduct = await editProduct(dataId, dataProduct);
+    res.status(200).json({ message: "Usuario editado correctamente", newEditProduct });
   } catch (error) {
     console.log(error);
   }
 });
 
-router.delete("/products/delete", async (req, res) => {
-  const dataEmail = req.body.email;
+router.delete("/products/delete/:id", async (req, res) => {
+  const dataId = req.params.id;
   try {
-    const destroyUser = await deleteProduct(dataEmail);
+    const removeProduct = await deleteProduct(dataId);
     res
       .status(200)
-      .json({ message: "Usuario eliminado correctamente", destroyUser });
+      .json({ message: "Usuario eliminado correctamente", removeProduct });
   } catch (error) {
     console.log(error);
   }

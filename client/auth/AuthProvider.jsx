@@ -4,11 +4,12 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
 
+  const passeUser = true
   const passeAdmin = true
 
-  const [user, setUser] = useState(passeAdmin);
+  const [user, setUser] = useState(passeUser);
+  const [admin, setAdmin] = useState(false);
 
-  const [admin, setAdmin] = useState(passeAdmin);
   const isLogged = () => user;
 
   const contextValue = {

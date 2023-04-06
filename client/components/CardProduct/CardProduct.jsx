@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
 import Boton from "../Boton/Boton";
 
-const CardProduct = ({ image, title, text }) => {
+const CardProduct = ({ image, title, text, id }) => {
   return (
     <>
       <Card style={{ width: "18rem" }}>
@@ -11,7 +11,7 @@ const CardProduct = ({ image, title, text }) => {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>{text}</Card.Text>
-          <Link to={`/products/${title}`}>
+          <Link to={`/products/${id}`}>
             <Boton type={"button"} height={"2.5rem"} texto={"Más detalles"} />
           </Link>
         </Card.Body>

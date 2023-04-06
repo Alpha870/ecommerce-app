@@ -9,8 +9,8 @@ const ProductSchema = new Schema(
     horas: {
       type: String,
     },
-    precios: {
-      type: String,
+    precio: {
+      type: Number,
     },
     pagos: {
       type: String,

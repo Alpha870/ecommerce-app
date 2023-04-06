@@ -1,13 +1,11 @@
 const ProductModel = require("../../models/product.js");
 
-
-
 const getProducts = async () => {
   return await ProductModel.find({});
 };
 
-const getProduct = async (dataEmail) => {
-  return await ProductModel.findOne({ dataEmail });
+const getProduct = async (dataId) => {
+  return await ProductModel.findById(dataId).exec();
 };
 
 const createProduct = async (body) => {
@@ -16,15 +14,14 @@ const createProduct = async (body) => {
   return newUser;
 };
 
-const editProduct = async (bodyUser, bodyEmail) => {
-  const dataEmail = { email: bodyEmail };
-  const dataUser = bodyUser;
-  await ProductModel.findOneAndUpdate(dataEmail, dataUser);
-  return dataUser;
+const editProduct = async (dataId, dataProduct) => {
+  return await ProductModel.findByIdAndUpdate(dataId, dataProduct, {
+    new: true,
+  });
 };
 
 const deleteProduct = async (dataEmail) => {
-  await ProductModel.deleteOne({ dataEmail });
+  await ProductModel.findByIdAndDelete(dataEmail);
 };
 
 module.exports = {
@@ -32,5 +29,5 @@ module.exports = {
   getProduct,
   createProduct,
   editProduct,
-  deleteProduct
+  deleteProduct,
 };
