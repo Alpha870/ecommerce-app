@@ -1,11 +1,11 @@
 import React, { useState } from "react";
+import "./header.css";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import Logo from "./codework-sfr.png";
-import "./Header.css";
 import useAuth from "../../auth/useAuth";
 
 const Header = () => {
@@ -42,42 +42,31 @@ const Header = () => {
           show={show}
           onHide={handleClose}
         >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title>
-              <Link to={"/"}>
-                <span className="titulo-lateral">INICIO</span>
-              </Link>
-            </Offcanvas.Title>
+          <Offcanvas.Header closeVariant='white' closeButton>
+            <Offcanvas.Title></Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="showList">
-              <Nav.Link>
-                <Link to={"/products"}>Servicios/packs</Link>
-              </Nav.Link>
-              <Nav.Link>
-                <Link to={"/about"}>Conocer más</Link>
-              </Nav.Link>
+              <Link to={"/"}>Inicio</Link>
+              <Link to={"/products"}>Servicios</Link>
+              <Link to={"/about"}>Blog</Link>
               {!user ? (
-                <Nav.Link>
-                  <Link to={"/login"}>Iniciar sesión </Link>
-                </Nav.Link>
+                <Nav.Link href="/login">Iniciar sesión</Nav.Link>
               ) : (
                 <>
                   {admin ? (
                     <div>
-                      <Nav.Link className="perfil">
-                        <Link to={"/profile"}>Mi perfil </Link>
-                      </Nav.Link>
-                      <Nav.Link>
-                        <Link to={"/admin/create/product"}>
-                          Crear productos
-                        </Link>
-                      </Nav.Link>
+                      <Link className="perfil" to={"/profile"}>
+                        Mi cuenta
+                      </Link>
+                      <Link href="/admin/create/product">
+                        Crear Productos
+                      </Link>
                     </div>
                   ) : (
-                    <Nav.Link className="perfil">
-                      <Link to={"/profile"}>Mi perfil </Link>
-                    </Nav.Link>
+                    <Link className="perfil" to={"/profile"}>
+                      Mi cuenta
+                    </Link>
                   )}
                 </>
               )}

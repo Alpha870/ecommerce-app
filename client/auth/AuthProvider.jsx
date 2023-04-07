@@ -7,7 +7,7 @@ const AuthProvider = ({ children }) => {
   const passeUser = true
   const passeAdmin = true
 
-  const [user, setUser] = useState(passeUser);
+  const [user, setUser] = useState(false);
   const [admin, setAdmin] = useState(false);
 
   const isLogged = () => user;

@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const dbConnect = require("./config/mongo.js");
 const routerUser = require('./apis/users/index.js')
 const routerProducts = require('./apis/products/index.js')
+const routerCheckout = require('./apis/checkout/index.js')
 
 //CREAR INSTANCIA
 const app = express();
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: "true" }));
 //RUTAS
 app.use(routerUser)
 app.use(routerProducts)
+app.use(routerCheckout)
 
 
 //escuchar solicitudes

@@ -4,12 +4,11 @@ const {
   productController,
 } = require("../../controller/productController/index");
 
-const { getProducts, getProduct, createProduct, editProduct, deleteProduct } =
-  productController;
+const { getProducts, getProduct } = productController;
 
 // RUTA REGISTRO PRODUCTO
 
-router.get("/products/getAll", async (req, res) => {
+router.get("/checkout/getAll", async (req, res) => {
   try {
     const allProducts = await getProducts();
     res
@@ -21,8 +20,9 @@ router.get("/products/getAll", async (req, res) => {
   }
 });
 
-router.get("/products/get/:id", async (req, res) => {
+router.get("/checkout/get/:id", async (req, res) => {
   const dataId = req.params.id;
+  console.log(dataId)
   try {
     const showProduct = await getProduct(dataId);
     res
@@ -34,7 +34,7 @@ router.get("/products/get/:id", async (req, res) => {
   }
 });
 
-router.post("/products/create", async (req, res) => {
+router.post("/checkout/create", async (req, res) => {
   const newProduct = req.body;
   try {
     const newCreateProduct = await createProduct(newProduct);
@@ -45,7 +45,7 @@ router.post("/products/create", async (req, res) => {
   }
 });
 
-router.put("/products/edit/:id", async (req, res) => {
+router.put("/checkout/edit/:id", async (req, res) => {
   const dataId = req.params.id;
   const dataProduct = req.body;
   try {
@@ -56,7 +56,7 @@ router.put("/products/edit/:id", async (req, res) => {
   }
 });
 
-router.delete("/products/delete/:id", async (req, res) => {
+router.delete("/checkout/delete/:id", async (req, res) => {
   const dataId = req.params.id;
   try {
     const removeProduct = await deleteProduct(dataId);

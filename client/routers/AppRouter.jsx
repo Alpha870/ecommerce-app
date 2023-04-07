@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         element: <ProfilePage />,
       },
       {
-        path: "/checkout",
+        path: "/checkout/:id",
         element: <CheckoutPage />,
       },
       {

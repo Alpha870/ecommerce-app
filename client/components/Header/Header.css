@@ -8,7 +8,6 @@
 .container-logo {
   display: flex;
   justify-content: center;
-  
 }
 
 .navbar {
@@ -25,19 +24,25 @@
   flex-direction: column;
 }
 
+.showList a {
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: #ffffffaf;
+  padding: 0.8rem;
+}
+
+.showList a:hover {
+  color: #fff;
+}
+
 .lateral {
-  font-weight: 700;
   line-height: 1rem;
-  background: rgb(255, 255, 255);
-  background: linear-gradient(
-    180deg,
-    rgb(255, 255, 255) 32%,
-    rgb(204, 200, 214) 87%
-  );
+  background: #192229;
 }
 
 .titulo-lateral {
-  color: #4cd3c2;
+  margin-left: 1rem;
+  color: #fff;
   font-weight: bold;
 }
 

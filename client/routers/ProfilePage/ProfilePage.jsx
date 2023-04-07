@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useAuth from "../../auth/useAuth";
 import axios from "axios";
 import "./profile.css";
@@ -18,14 +18,7 @@ const ProfilePage = () => {
 
   const [edit, setEdit] = useState(false);
 
-  const [formUser, setFormUser] = useState( user );
-
-  const initialUser = {
-    nombre: "",
-    telefono: "",
-    email: "",
-    password: "",
-  };
+  const [formUser, setFormUser] = useState(user);
 
   //****EDITAR****/
   const handleChange = (e) => {
@@ -47,7 +40,7 @@ const ProfilePage = () => {
     const result = await axios.put(url, { formUser });
     const dataUser = result.data.newEditUser;
     modifyUser(dataUser);
-    setUser(formUser)
+    setUser(formUser);
     setEdit(false);
     getUser();
   };

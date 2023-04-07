@@ -17,8 +17,6 @@ const ProductsPage = () => {
     setShowProduct(res);
   };
 
-  console.log(showProduct);
-
   useEffect(() => {
     getAllProducts();
   }, []);
