@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import "./checkout.css";
 import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import Button from "react-bootstrap/Button";
 import axios from "axios";
 import useAuth from "../../auth/useAuth";
 
@@ -10,8 +13,8 @@ const CheckoutPage = () => {
   const [product, setProduct] = useState({});
   const [cart, setCart] = useState({
     usuario: user.nombre,
-    producto: '',
-    precio: '',
+    producto: "",
+    precio: "",
   });
 
   const getProduct = async () => {
@@ -36,17 +39,26 @@ const CheckoutPage = () => {
   return (
     <>
       <Header />
-      <h1>Carrito de compras</h1>
-      <h6>{`Hola ${cart.usuario}, te agradezco que hayas 
+      <section className="section-check">
+        <h1 className="h1-check">Carrito de compras</h1>
+        <h6>{`Hola ${cart.usuario}, te agradezco que hayas 
       llegado hasta este punto completa tu compra con el pedido`}</h6>
-      {product && (
-        <Card style={{ width: "18rem" }}>
-          <Card.Header>{cart.producto}</Card.Header>
-          <ListGroup variant="flush">
-            <ListGroup.Item>precio: {cart.precio}$</ListGroup.Item>
-          </ListGroup>
-        </Card>
-      )}
+        {product && (
+          <Card style={{ width: "18rem" }}>
+            <Card.Header>{cart.producto}</Card.Header>
+            <ListGroup variant="flush">
+              <ListGroup.Item>precio: {cart.precio}$</ListGroup.Item>
+            </ListGroup>
+          </Card>
+        )}
+        <div className="div-check">
+          <h5>TOTAL = {cart.precio} $</h5>
+          <Button className="button-check" variant="primary">
+            Realizar la compra
+          </Button>
+        </div>
+      </section>
+      <Footer />
     </>
   );
 };
