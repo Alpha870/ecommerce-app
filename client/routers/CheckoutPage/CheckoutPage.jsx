@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
+import useAuth from "../../auth/useAuth";
 import "./checkout.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import axios from "axios";
-import useAuth from "../../auth/useAuth";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 
 const CheckoutPage = () => {
   const { user, setUser } = useAuth();
@@ -29,12 +30,34 @@ const CheckoutPage = () => {
       precio: dataProduct.precio,
     });
   };
-
   useEffect(() => {
     getProduct();
   }, []);
 
-  console.log(cart);
+  // **************ORDENES DE PAYPAL**************
+
+  // Configurar el pago
+  const createOrder = (data, actions) => {
+    return actions.order.create({
+      purchase_units: [
+        {
+          amount: {
+            value: `${cart.precio}`,
+          },
+        },
+      ],
+    });
+  };
+  // Inicializar el botón de pago
+  const onApprove = (data, actions) => {
+    return actions.order.capture().then((details) => {
+      const name = details.payer.name.given_name;
+      alert(`Transaction completed by ${name}`);
+    });
+  };
+
+  // console.log(product,'soy el producto')
+  // console.log(cart, 'soy el carrito');
 
   return (
     <>
@@ -53,9 +76,13 @@ const CheckoutPage = () => {
         )}
         <div className="div-check">
           <h5>TOTAL = {cart.precio} $</h5>
-          <Button className="button-check" variant="primary">
-            Realizar la compra
-          </Button>
+          {user ? (
+              <PayPalButtons createOrder={createOrder} onApprove={onApprove} />
+          ) : (
+            <div className="spinner">
+              <h2>hola</h2>
+            </div>
+          )}
         </div>
       </section>
       <Footer />

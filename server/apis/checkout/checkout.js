@@ -6,7 +6,7 @@ const {
 
 const { getProducts, getProduct } = productController;
 
-// RUTA REGISTRO PRODUCTO
+// RUTAS REGISTRO PEDIDO
 
 router.get("/checkout/getAll", async (req, res) => {
   try {
@@ -22,7 +22,6 @@ router.get("/checkout/getAll", async (req, res) => {
 
 router.get("/checkout/get/:id", async (req, res) => {
   const dataId = req.params.id;
-  console.log(dataId)
   try {
     const showProduct = await getProduct(dataId);
     res
@@ -45,27 +44,29 @@ router.post("/checkout/create", async (req, res) => {
   }
 });
 
-router.put("/checkout/edit/:id", async (req, res) => {
-  const dataId = req.params.id;
-  const dataProduct = req.body;
-  try {
-    const newEditProduct = await editProduct(dataId, dataProduct);
-    res.status(200).json({ message: "Usuario editado correctamente", newEditProduct });
-  } catch (error) {
-    console.log(error);
-  }
-});
+// router.put("/checkout/edit/:id", async (req, res) => {
+//   const dataId = req.params.id;
+//   const dataProduct = req.body;
+//   try {
+//     const newEditProduct = await editProduct(dataId, dataProduct);
+//     res.status(200).json({ message: "Usuario editado correctamente", newEditProduct });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
-router.delete("/checkout/delete/:id", async (req, res) => {
-  const dataId = req.params.id;
-  try {
-    const removeProduct = await deleteProduct(dataId);
-    res
-      .status(200)
-      .json({ message: "Usuario eliminado correctamente", removeProduct });
-  } catch (error) {
-    console.log(error);
-  }
-});
+// router.delete("/checkout/delete/:id", async (req, res) => {
+//   const dataId = req.params.id;
+//   try {
+//     const removeProduct = await deleteProduct(dataId);
+//     res
+//       .status(200)
+//       .json({ message: "Usuario eliminado correctamente", removeProduct });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
+
+
 
 module.exports = router;
