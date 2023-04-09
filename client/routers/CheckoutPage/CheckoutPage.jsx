@@ -7,57 +7,108 @@ import Footer from "../../components/Footer/Footer";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import { PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+
+const initialOptions = {
+  "client-id": `${import.meta.env.VITE_PAYPAL_CLIENT_ID}`,
+  currency: "EUR",
+  intent: "capture",
+};
 
 const CheckoutPage = () => {
   const { user, setUser } = useAuth();
-  const [product, setProduct] = useState({});
-  const [cart, setCart] = useState({
-    usuario: user.nombre,
-    producto: "",
-    precio: "",
-  });
 
+  const [product, setProduct] = useState({});
+  const [cart, setCart] = useState({});
+
+  // estados paypal
+  const [show, setShow] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [ErrorMessage, setErrorMessage] = useState("");
+  const [orderID, setOrderID] = useState(false);
+
+  // ********* MOSTRAR PRODUCTOS ***********
   const getProduct = async () => {
     const id = window.location.href.split("/").pop();
     const url = `${import.meta.env.VITE_BASE_URL}checkout/get/${id}`;
     const result = await axios.get(url);
     const dataProduct = result.data.showProduct;
-    setProduct(dataProduct);
-    setCart({
-      usuario: user.nombre,
-      producto: dataProduct.nombre,
-      precio: dataProduct.precio,
-    });
+    try {
+      setProduct(dataProduct);
+      setCart({
+        usuarioID: user.id,
+        productos: [
+          {
+            productoID: dataProduct._id,
+            nombre: dataProduct.nombre,
+            precio: dataProduct.precio,
+            fechaEntrega: dataProduct.terminado,
+          },
+        ],
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   useEffect(() => {
     getProduct();
   }, []);
 
   // **************ORDENES DE PAYPAL**************
 
-  // Configurar el pago
+  // Crear la orden
   const createOrder = (data, actions) => {
-    return actions.order.create({
-      purchase_units: [
-        {
-          amount: {
-            value: `${cart.precio}`,
+    return actions.order
+      .create({
+        purchase_units: [
+          {
+            description: `${product.nombre}`,
+            amount: {
+              currency_code: "EUR",
+              value: product.precio,
+            },
           },
-        },
-      ],
-    });
+        ],
+      })
+      .then((orderID) => {
+        setOrderID(orderID);
+        return orderID;
+      });
   };
-  // Inicializar el botón de pago
+  // Aprovación
   const onApprove = (data, actions) => {
     return actions.order.capture().then((details) => {
-      const name = details.payer.name.given_name;
-      alert(`Transaction completed by ${name}`);
+      const { payer } = details;
+      setSuccess(true);
     });
   };
 
-  // console.log(product,'soy el producto')
-  // console.log(cart, 'soy el carrito');
+  // captura de errores
+  const onError = (data, actions) => {
+    setErrorMessage("An Error occured with your payment ");
+  };
+
+  useEffect(() => {
+    if (success) {
+      // alert("Pago exitoso");
+      console.log("Pedido exitoso. Su ID de pedido es--", orderID);
+      saveOrder();
+    }
+  }, [success]);
+
+  // ************* CREACIÓN DE PEDIDOS ***************
+
+  //****CREAR****/
+  const saveOrder = async () => {
+    const url = `${import.meta.env.VITE_BASE_URL}orders/create`;
+    const res = await axios.post(url, cart);
+    try {
+      console.log(res.data);
+    } catch (error) {
+      console.log("error en el registro");
+    }
+  };
 
   return (
     <>
@@ -65,24 +116,40 @@ const CheckoutPage = () => {
       <section className="section-check">
         <h1 className="h1-check">Carrito de compras</h1>
         <h6>{`Hola ${cart.usuario}, te agradezco que hayas 
-      llegado hasta este punto completa tu compra con el pedido`}</h6>
+      llegado hasta este punto completa tu compra realizando el pago`}</h6>
         {product && (
           <Card style={{ width: "18rem" }}>
-            <Card.Header>{cart.producto}</Card.Header>
+            <Card.Header>{product.nombre}</Card.Header>
             <ListGroup variant="flush">
-              <ListGroup.Item>precio: {cart.precio}$</ListGroup.Item>
+              <ListGroup.Item>precio: {product.precio}€</ListGroup.Item>
             </ListGroup>
           </Card>
         )}
         <div className="div-check">
-          <h5>TOTAL = {cart.precio} $</h5>
-          {user ? (
-              <PayPalButtons createOrder={createOrder} onApprove={onApprove} />
-          ) : (
-            <div className="spinner">
-              <h2>hola</h2>
-            </div>
-          )}
+          <h6>TOTAL = {product.precio}€</h6>
+          <PayPalScriptProvider options={initialOptions}>
+            {show ? (
+              <div>
+                <p>El pago es ficticio</p>
+                <PayPalButtons
+                  style={{ layout: "vertical" }}
+                  createOrder={createOrder}
+                  onApprove={onApprove}
+                />
+                <Button
+                  onClick={() => setShow(false)}
+                  variant="outline-danger"
+                  size="sm"
+                >
+                  Cancelar
+                </Button>
+              </div>
+            ) : (
+              <Button onClick={() => setShow(true)} variant="success">
+                Realizar Pago
+              </Button>
+            )}
+          </PayPalScriptProvider>
         </div>
       </section>
       <Footer />

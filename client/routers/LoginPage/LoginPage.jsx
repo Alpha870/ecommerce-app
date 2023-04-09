@@ -11,7 +11,7 @@ import lapiz from "./lapiz.png";
 import Boton from "../../components/Boton/Boton";
 
 const LoginPage = () => {
-  const {setUser, setAdmin} = useAuth()
+  const { setUser, setAdmin } = useAuth();
   // estado para saber si quiere registrarse
   const [register, setRegister] = useState(false);
 
@@ -44,24 +44,23 @@ const LoginPage = () => {
     e.preventDefault();
     const url = `${import.meta.env.VITE_BASE_URL}users/login`;
     const result = await axios.post(url, dataLogin);
-    
+
     try {
-      const res = result.data.user
+      const res = result.data.user;
       if (res.password === import.meta.env.VITE_ADMIN_PASS) {
         setAdmin(true);
       }
       setUser({
+        id: res._id,
         nombre: res.nombre,
         telefono: res.telefono,
         email: res.email,
         password: res.password,
       });
-      
     } catch (error) {
       console.log("error en el registro", error);
     }
   };
-  
 
   //****CREAR****/
   const changeRegister = (e) => {
@@ -73,9 +72,9 @@ const LoginPage = () => {
     e.preventDefault();
     const url = `${import.meta.env.VITE_BASE_URL}users/create`;
     const result = await axios.post(url, dataUser);
-    if (result.status === 200) {
+    try {
       setUser(dataUser);
-    } else {
+    } catch (error) {
       console.log("error en el registro");
     }
   };

@@ -6,7 +6,7 @@ const dbConnect = require("./config/mongo.js");
 const routerUser = require("./apis/users/index.js");
 const routerProducts = require("./apis/products/index.js");
 const routerCheckout = require("./apis/checkout/index.js");
-// const routePaypal = require('./apis/paypal/index.js')
+const routerOrders = require("./apis/orders/index.js");
 
 //CREAR INSTANCIA
 const app = express();
@@ -39,7 +39,7 @@ app.use(express.urlencoded({ extended: "true" }));
 app.use(routerUser);
 app.use(routerProducts);
 app.use(routerCheckout);
-// app.use(routePaypal)
+app.use(routerOrders)
 
 //escuchar solicitudes
 const PORT = process.env.PORT;

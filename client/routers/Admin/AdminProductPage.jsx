@@ -50,10 +50,10 @@ const AdminProductPage = () => {
   const saveProduct = async (e) => {
     e.preventDefault();
     const url = `${import.meta.env.VITE_BASE_URL}/products/create`;
-    const result = await axios.post(url, formProduct);
-    if (result.status === 200) {
-      getAllProducts()
-    } else {
+    await axios.post(url, formProduct);
+    try {
+      getAllProducts();
+    } catch (error) {
       console.log("error en el registro");
     }
   };
@@ -68,17 +68,21 @@ const AdminProductPage = () => {
   };
 
   const editProduct = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/edit/${formProduct._id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}products/edit/${
+      formProduct._id
+    }`;
     await axios.put(url, formProduct);
-    getAllProducts()
+    getAllProducts();
   };
 
   //****ELIMINAR****/
 
   const deleteProduct = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/delete/${formProduct._id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}products/delete/${
+      formProduct._id
+    }`;
     await axios.delete(url);
-    getAllProducts()
+    getAllProducts();
   };
 
   return (
