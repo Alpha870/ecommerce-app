@@ -24,8 +24,10 @@ router.post("/users/create", async (req, res) => {
   const newUser = req.body;
   try {
     const newCreateUser = await createUser(newUser);
-    res.status(200).json({ message: "Formulario enviado correctamente" });
-    console.log("creado nuevo usuario", newCreateUser);
+    res
+      .status(200)
+      .json({ message: "Formulario enviado correctamente", newCreateUser });
+    // console.log("creado nuevo usuario", newCreateUser);
   } catch (error) {
     console.log(error);
   }

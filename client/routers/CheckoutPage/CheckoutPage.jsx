@@ -19,7 +19,7 @@ const CheckoutPage = () => {
   const { user, setUser } = useAuth();
 
   const [product, setProduct] = useState({});
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState();
 
   // estados paypal
   const [show, setShow] = useState(false);
@@ -91,12 +91,14 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     if (success) {
-      // alert("Pago exitoso");
       console.log("Pedido exitoso. Su ID de pedido es--", orderID);
       saveOrder();
     }
   }, [success]);
-
+  
+  // if (user && product && cart) {
+  //   console.log(user);
+  // }
   // ************* CREACIÓN DE PEDIDOS ***************
 
   //****CREAR****/
@@ -115,7 +117,7 @@ const CheckoutPage = () => {
       <Header />
       <section className="section-check">
         <h1 className="h1-check">Carrito de compras</h1>
-        <h6>{`Hola ${cart.usuario}, te agradezco que hayas 
+        <h6>{`Hola ${user.nombre}, te agradezco que hayas 
       llegado hasta este punto completa tu compra realizando el pago`}</h6>
         {product && (
           <Card style={{ width: "18rem" }}>
@@ -128,7 +130,7 @@ const CheckoutPage = () => {
         <div className="div-check">
           <h6>TOTAL = {product.precio}€</h6>
           <PayPalScriptProvider options={initialOptions}>
-            {show ? (
+            {cart && show ? (
               <div>
                 <p>El pago es ficticio</p>
                 <PayPalButtons

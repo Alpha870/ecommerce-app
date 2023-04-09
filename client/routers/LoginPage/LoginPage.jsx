@@ -44,9 +44,8 @@ const LoginPage = () => {
     e.preventDefault();
     const url = `${import.meta.env.VITE_BASE_URL}users/login`;
     const result = await axios.post(url, dataLogin);
-
+    const res = result.data.user;
     try {
-      const res = result.data.user;
       if (res.password === import.meta.env.VITE_ADMIN_PASS) {
         setAdmin(true);
       }
@@ -72,8 +71,16 @@ const LoginPage = () => {
     e.preventDefault();
     const url = `${import.meta.env.VITE_BASE_URL}users/create`;
     const result = await axios.post(url, dataUser);
+    const res = result.data.newCreateUser;
     try {
-      setUser(dataUser);
+      setUser({
+        id: res._id,
+        nombre: res.nombre,
+        telefono: res.telefono,
+        email: res.email,
+        password: res.password,
+      });
+      
     } catch (error) {
       console.log("error en el registro");
     }
