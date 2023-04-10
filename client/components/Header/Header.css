@@ -46,8 +46,17 @@
   font-weight: bold;
 }
 
-.perfil {
-  margin-top: 2rem;
+.servicios-header {
+  margin-bottom: 2rem;
+}
+
+.separador-header {
+  border: 1px solid #ffffffaf;;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #ffffffaf;
+  padding: 0.8rem 0.8rem 0.8rem 0.8rem;
+  margin-bottom: 0.2rem;
 }
 
 @media screen and (max-width: 375px) {

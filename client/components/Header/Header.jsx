@@ -9,7 +9,7 @@ import Logo from "./codework-sfr.png";
 import useAuth from "../../auth/useAuth";
 
 const Header = () => {
-  const { user, admin } = useAuth();
+  const { user, setUser, admin } = useAuth();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -42,31 +42,41 @@ const Header = () => {
           show={show}
           onHide={handleClose}
         >
-          <Offcanvas.Header closeVariant='white' closeButton>
+          <Offcanvas.Header closeVariant="white" closeButton>
             <Offcanvas.Title></Offcanvas.Title>
           </Offcanvas.Header>
           <Offcanvas.Body>
             <Nav className="showList">
               <Link to={"/"}>Inicio</Link>
-              <Link to={"/products"}>Servicios</Link>
               <Link to={"/about"}>Blog</Link>
+              <Link className="servicios-header" to={"/products"}>Servicios</Link>
               {!user ? (
                 <Nav.Link href="/login">Iniciar sesión</Nav.Link>
               ) : (
                 <>
                   {admin ? (
-                    <div>
+                    <>
+                      <p className="separador-header">Admin</p>
+                      <Link to={"/profile"}>
+                        Mi cuenta
+                      </Link>
+                      <Link to={"/admin/create/product"}>Crear Productos</Link>
+                      <Link to={"/"} onClick={() => setUser(false)}>
+                        {" "}
+                        Cerrar sesión
+                      </Link>
+                    </>
+                  ) : (
+                    <>
                       <Link className="perfil" to={"/profile"}>
                         Mi cuenta
                       </Link>
-                      <Link href="/admin/create/product">
-                        Crear Productos
+                      <Link to={"/orders"}>Mis pedidos</Link>
+                      <Link to={"/"} onClick={() => setUser(false)}>
+                        {" "}
+                        Cerrar sesión
                       </Link>
-                    </div>
-                  ) : (
-                    <Link className="perfil" to={"/profile"}>
-                      Mi cuenta
-                    </Link>
+                    </>
                   )}
                 </>
               )}

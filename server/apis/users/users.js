@@ -8,7 +8,6 @@ const { getUser, createUser, editUser, deleteUser, existsUser } =
 
 router.get("/users/get", async (req, res) => {
   const dataEmail = req.body.email;
-  console.log(dataEmail, "estoy despues de traer body");
   try {
     const showUser = await getUser(dataEmail);
     res
@@ -27,7 +26,6 @@ router.post("/users/create", async (req, res) => {
     res
       .status(200)
       .json({ message: "Formulario enviado correctamente", newCreateUser });
-    // console.log("creado nuevo usuario", newCreateUser);
   } catch (error) {
     console.log(error);
   }
@@ -77,10 +75,8 @@ router.post("/users/login", async (req, res) => {
     // es igual al password enviado por el body ↓↓
     if (user.password === process.env.ADMIN_PASS) {
       res.send({ user });
-      console.log({ user }, "vengo del admin");
     } else {
       res.send({ user });
-      console.log({ user }, "vengo del usuario normal");
     }
   } catch (error) {
     console.log(error);

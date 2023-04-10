@@ -6,6 +6,9 @@ const ProductSchema = new Schema(
     nombre: {
       type: String,
     },
+    subtitulo: {
+      type: String,
+    },
     horas: {
       type: String,
     },

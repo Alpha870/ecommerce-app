@@ -35,6 +35,9 @@ const ProductPage = () => {
           </Card.Header>
           <Card.Body>
             <Card.Text className="card-title-productOne">
+              {product.subtitulo}
+            </Card.Text>
+            <Card.Text className="card-title-productOne">
               {product.caracteristicas}
             </Card.Text>
             <ListGroup className="list-group-flush">

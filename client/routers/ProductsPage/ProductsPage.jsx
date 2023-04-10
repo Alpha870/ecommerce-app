@@ -31,10 +31,11 @@ const ProductsPage = () => {
             showProduct.map((item) => (
               <div key={item._id}>
                 <CardProduct
-                  image={img}
-                  title={item.nombre}
                   id={item._id}
-                  text={item.caracteristicas}
+                  image={img}
+                  nombre={item.nombre}
+                  subtitle={item.horas}
+                  text={item.subtitulo}
                 />
               </div>
             ))}

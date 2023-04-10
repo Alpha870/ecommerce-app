@@ -3,6 +3,8 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import axios from "axios";
 import useAuth from "../../auth/useAuth";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
 const OrdersPage = () => {
   const { user, setUser } = useAuth();
@@ -10,7 +12,9 @@ const OrdersPage = () => {
 
   //****MOSTRAR****/
   const getAllOrders = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}orders/getAll?userId=${user.id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}orders/getAll?userId=${
+      user.id
+    }`;
     const result = await axios.get(url);
     const res = result.data.allOrders;
     setOrders(res);
@@ -23,17 +27,38 @@ const OrdersPage = () => {
   return (
     <>
       <Header />
-      <h2>Hola, {user.nombre} estos son tus pedidos</h2>
-      {orders &&
-        orders.map((item, index) => (
-          <div key={index}>
-            <h6>Pedido realizado: {item.createdAt.slice(0, 10)}</h6>
-            <h6>{item.usuarioID.nombre}</h6>
-            <h6>{item.productos[0].nombre}</h6>
-            <h6>{item.productos[0].precio}€</h6>
-            <h6>{item.productos[0].fechaEntrega} dias</h6>
-          </div>
-        ))}
+      <section
+        style={{
+          minHeight: '65vh',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "2rem",
+          textAlign: "center",
+        }}
+      >
+        <h2>Hola, {user.nombre} estos son tus pedidos.</h2>
+        {orders &&
+          orders.map((item, index) => (
+            <Card key={index} style={{ width: "18rem" }}>
+              <Card.Header>
+                Pedido realizado {item.createdAt.slice(0, 10)}{" "}
+                {item.createdAt.slice(11, 16)}
+              </Card.Header>
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  Contratado: {item.productos[0].nombre}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Precio: {item.productos[0].precio}€
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  Fecha de entrega en: {item.productos[0].fechaEntrega} dias
+                </ListGroup.Item>
+              </ListGroup>
+            </Card>
+          ))}
+      </section>
       <Footer />
     </>
   );

@@ -10,6 +10,11 @@ import Header from "../../components/Header/Header";
 import curvaHome from "./curva-home.png";
 
 const HomePage = () => {
+
+  const handleScrollToTop = () => {
+    window.scrollTo(0, 0);
+  }
+
   return (
     <section>
       <section className="seccion-header-article">
@@ -84,7 +89,7 @@ const HomePage = () => {
         </div>
       </aside>
 
-      <Link to={"/about"} className="link-button">
+      <Link onClick={handleScrollToTop} to={"/about"} className="link-button">
         <Button className="boton-mas">Conóceme más</Button>
       </Link>
 

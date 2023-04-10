@@ -13,20 +13,25 @@ const AdminProductPage = () => {
   const [formProduct, setFormproduct] = useState({
     id: "",
     nombre: "",
+    subtitulo: "",
     horas: "",
     precio: "",
     pagos: "",
     caracteristicas: "",
     terminado: "",
   });
-  const productoInicio = {
-    id: "",
-    nombre: "",
-    horas: "",
-    precio: "",
-    pagos: "",
-    caracteristicas: "",
-    terminado: "",
+
+  const emptyProduct = () => {
+    setFormproduct({
+      id: "",
+      nombre: "",
+      subtitulo: "",
+      horas: "",
+      precio: "",
+      pagos: "",
+      caracteristicas: "",
+      terminado: "",
+    });
   };
 
   const handleChange = (e) => {
@@ -53,6 +58,7 @@ const AdminProductPage = () => {
     await axios.post(url, formProduct);
     try {
       getAllProducts();
+      emptyProduct()
     } catch (error) {
       console.log("error en el registro");
     }
@@ -73,6 +79,7 @@ const AdminProductPage = () => {
     }`;
     await axios.put(url, formProduct);
     getAllProducts();
+    emptyProduct()
   };
 
   //****ELIMINAR****/
@@ -83,6 +90,7 @@ const AdminProductPage = () => {
     }`;
     await axios.delete(url);
     getAllProducts();
+    emptyProduct()
   };
 
   return (
@@ -102,8 +110,9 @@ const AdminProductPage = () => {
               <Card style={{ width: "15rem" }}>
                 <Card.Body>
                   <ListGroup variant="flush">
-                    <ListGroup.Item>Nombre: {item._id}</ListGroup.Item>
+                    <ListGroup.Item>Id: {item._id}</ListGroup.Item>
                     <ListGroup.Item>Nombre: {item.nombre}</ListGroup.Item>
+                    <ListGroup.Item>subtitulo: {item.subtitulo}</ListGroup.Item>
                     <ListGroup.Item>horas: {item.horas}</ListGroup.Item>
                     <ListGroup.Item>precio: {item.precio}</ListGroup.Item>
                     <ListGroup.Item>pagos: {item.pagos}</ListGroup.Item>
@@ -148,6 +157,16 @@ const AdminProductPage = () => {
           />
         </Form.Group>
         <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
+          <Form.Label>Subtitulo</Form.Label>
+          <Form.Control
+            as="textarea"
+            name="subtitulo"
+            value={formProduct.subtitulo}
+            onChange={handleChange}
+            rows={5}
+          />
+        </Form.Group>
+        <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
           <Form.Label>Horas</Form.Label>
           <Form.Control
             type="text"
@@ -168,10 +187,11 @@ const AdminProductPage = () => {
         <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
           <Form.Label>Forma Pagos</Form.Label>
           <Form.Control
-            type="text"
+            as="textarea"
             name="pagos"
             value={formProduct.pagos}
             onChange={handleChange}
+            rows={5}
           />
         </Form.Group>
         <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">

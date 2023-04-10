@@ -9,7 +9,7 @@ const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState(false);
   const [admin, setAdmin] = useState(false);
-  // console.log(user, 'desde contexto')
+  
   const isLogged = () => user;
 
   const contextValue = {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import "./profile.css";
 import useAuth from "../../auth/useAuth";
 import axios from "axios";
-import "./profile.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Boton from "../../components/Boton/Boton";
@@ -17,8 +17,8 @@ const ProfilePage = () => {
   const { user, setUser } = useAuth();
 
   const [edit, setEdit] = useState(false);
-
   const [formUser, setFormUser] = useState(user);
+  const [showPass, setShowPass] = useState(false);
 
   //****EDITAR****/
   const handleChange = (e) => {
@@ -72,7 +72,25 @@ const ProfilePage = () => {
               <Card.Header>{formUser.nombre}</Card.Header>
               <Card.Header>{formUser.telefono}</Card.Header>
               <Card.Header>{formUser.email}</Card.Header>
-              <Card.Header>{formUser.password}</Card.Header>
+              {showPass ? (
+                <Card.Header className="password-profile">
+                  {formUser.password}{" "}
+                  <i
+                    onClick={() => setShowPass(false)}
+                    className="bx bx-low-vision bx-sm float-end"
+                    style={{ cursor: "pointer" }}
+                  ></i>
+                </Card.Header>
+              ) : (
+                <Card.Header>
+                  ***********
+                  <i
+                    onClick={() => setShowPass(true)}
+                    className="bx bx-low-vision bx-sm float-end"
+                    style={{ cursor: "pointer" }}
+                  ></i>
+                </Card.Header>
+              )}
             </Card.Body>
             <Card.Body className="body-buttons">
               <Button variant="outline-warning" onClick={() => setEdit(true)}>
@@ -143,6 +161,12 @@ const ProfilePage = () => {
                   />
                 </Form.Group>
                 <div className="div-button-profile">
+                  <Button
+                    onClick={() => setEdit(false)}
+                    variant="outline-warning me-5"
+                  >
+                    Cancelar
+                  </Button>
                   <Boton type={"submit"} height={"3rem"} texto={"Modificar"} />
                 </div>
               </Form>
