@@ -9,10 +9,18 @@
     min-height: 70vh;
 }
 
+.titulo-products {
+    font-weight: 900;
+    padding: 1rem;
+    font-size: 2.5rem;
+    color: #223378;
+    text-align: center;
+  }
+
 .div-products {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 3rem;
+    margin: 13rem 3rem;
     gap: 5rem;
 }

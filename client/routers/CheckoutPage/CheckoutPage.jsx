@@ -96,9 +96,6 @@ const CheckoutPage = () => {
     }
   }, [success]);
   
-  // if (user && product && cart) {
-  //   console.log(user);
-  // }
   // ************* CREACIÓN DE PEDIDOS ***************
 
   //****CREAR****/

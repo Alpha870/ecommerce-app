@@ -127,7 +127,7 @@ const AdminProductPage = () => {
                     onClick={() => getProduct(item._id)}
                     variant="primary"
                   >
-                    Guardar el id
+                    Editar
                   </Button>
                 </Card.Body>
               </Card>
@@ -187,11 +187,10 @@ const AdminProductPage = () => {
         <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
           <Form.Label>Forma Pagos</Form.Label>
           <Form.Control
-            as="textarea"
+            text="text"
             name="pagos"
             value={formProduct.pagos}
             onChange={handleChange}
-            rows={5}
           />
         </Form.Group>
         <Form.Group className="mb-1" controlId="exampleForm.ControlTextarea1">

@@ -3,8 +3,10 @@ import "./products.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import CardProduct from "../../components/CardProduct/CardProduct";
-import img from "../../components/Carousel/img/Data.png";
 import axios from "axios";
+import time from "./Time.png";
+import web from "./Web.png";
+import store from "./Store.png";
 
 const ProductsPage = () => {
   const [showProduct, setShowProduct] = useState([]);
@@ -21,18 +23,21 @@ const ProductsPage = () => {
     getAllProducts();
   }, []);
 
+  const images = [time, web, store];
+
   return (
     <section className="section-products">
       <Header />
+        <h2 className="titulo-products">¡Haz crecer tu negocio en línea! Elige el servicio que necesitas</h2>
       <article className="article-products">
-        <h2>Elige tu pack</h2>
         <aside className="div-products">
           {showProduct &&
-            showProduct.map((item) => (
+            showProduct.map((item, index) => (
               <div key={item._id}>
                 <CardProduct
                   id={item._id}
-                  image={img}
+                  //uso el index para iterar el array de imagenes
+                  image={images[index]}
                   nombre={item.nombre}
                   subtitle={item.horas}
                   text={item.subtitulo}

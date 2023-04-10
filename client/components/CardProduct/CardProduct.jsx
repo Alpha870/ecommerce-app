@@ -6,7 +6,7 @@ import Boton from "../Boton/Boton";
 const CardProduct = ({ image, nombre, subtitle, text, id }) => {
   return (
     <>
-      <Card style={{ width: "18rem" }}>
+      <Card style={{ width: "18rem", padding: "2rem 0.3rem" }}>
         <Card.Img variant="top" src={image} />
         <Card.Body>
           <Card.Title>{nombre}</Card.Title>

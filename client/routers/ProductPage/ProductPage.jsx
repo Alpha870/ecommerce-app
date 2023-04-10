@@ -5,7 +5,11 @@ import Footer from "../../components/Footer/Footer";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
-import task from "./task.png";
+
+import time from "../ProductsPage/Time.png";
+import web from "../ProductsPage/Web.png";
+import store from "../ProductsPage/Store.png";
+
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -17,37 +21,66 @@ const ProductPage = () => {
     const url = `${import.meta.env.VITE_BASE_URL}products/get/${id}`;
     const result = await axios.get(url);
     const dataProduct = result.data.showProduct;
-    setProduct(dataProduct);
+    setProduct({
+      _id: dataProduct._id,
+      nombre: dataProduct.nombre,
+      horas: dataProduct.horas,
+      subtitulo: dataProduct.subtitulo,
+      caracteristicas: dataProduct.caracteristicas.split("."),
+      precio: dataProduct.precio,
+      pagos: dataProduct.pagos.split("."),
+      terminado: dataProduct.terminado,
+    });
   };
 
   useEffect(() => {
     getProduct();
   }, []);
 
+  const selectImage = () => {
+    if (product.nombre === "PACK/HORAS") {
+      return time;
+    } else if (product.nombre === "DISEÑO WEB") {
+      return web;
+    } else {
+      return store;
+    }
+  };
+
   return (
     <section>
       <Header />
       <article className="article-productOne">
         <Card className="card-productOne">
-          <Card.Img variant="top" src={task} />
-          <Card.Header className="card-title-productOne">
+          <Card.Img
+            style={{ maxWidth: "30rem", margin: "0 auto" }}
+            variant="top"
+            src={selectImage()}
+          />
+          <Card.Title className="card-title-productOne">
             {product.nombre}
-          </Card.Header>
+          </Card.Title>
+          <Card.Subtitle className="card-title-productOne">
+            {product.horas}
+          </Card.Subtitle>
           <Card.Body>
-            <Card.Text className="card-title-productOne">
-              {product.subtitulo}
-            </Card.Text>
-            <Card.Text className="card-title-productOne">
-              {product.caracteristicas}
-            </Card.Text>
-            <ListGroup className="list-group-flush">
-              <ListGroup.Item>Horas: {product.horas} </ListGroup.Item>
-              <ListGroup.Item>Precio: {product.precio} </ListGroup.Item>
-              <ListGroup.Item>Forma Pago: {product.pagos} </ListGroup.Item>
-              <ListGroup.Item>
-                Terminado en: {product.terminado} dias
-              </ListGroup.Item>
+            <Card.Text>{product.subtitulo}</Card.Text>
+            {product.caracteristicas &&
+              product.caracteristicas.map((item, index) => (
+                <ListGroup key={index}>{item}</ListGroup>
+              ))}
+            <ListGroup className="card-text-productOne">
+              <span className="card-span-productOne">Pagos:</span>
+              {product.pagos}
             </ListGroup>
+            <Card.Text className="card-text-productOne">
+              <span className="card-span-productOne">Precio:</span>
+              {product.precio}
+            </Card.Text>
+            <Card.Text className="card-text-productOne">
+              <span className="card-span-productOne">Terminado en: </span>
+              {product.terminado} dias
+            </Card.Text>
           </Card.Body>
           <Card.Body className="body-buttons">
             <Link to={"/products"}>
