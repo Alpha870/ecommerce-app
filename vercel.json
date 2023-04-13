@@ -1,8 +1,9 @@
 {
+  "version": 3,
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "http://localhost:3000/api/$1"
+      "src": "/(.*)",
+      "headers": { "Location": "https://localhost/3000/$1" }
     }
   ]
 }
