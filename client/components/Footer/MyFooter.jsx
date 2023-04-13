@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import curva from './curva.png'
-import "./Footer.css";
+import "../Footer/my-footer.css";
 
 const Footer = () => {
   const [year, setYear] = useState("");

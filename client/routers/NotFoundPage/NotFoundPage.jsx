@@ -1,6 +1,6 @@
 import React from "react";
 import "./notFoundPage.css";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header/MyHeader";
 import img404 from "./img404.png";
 import Boton from "../../components/Boton/Boton";
 import { Link } from "react-router-dom";

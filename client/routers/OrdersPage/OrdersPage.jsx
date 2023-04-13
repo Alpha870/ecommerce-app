@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/MyHeader";
+import Footer from "../../components/Footer/MyFooter";
 import axios from "axios";
 import useAuth from "../../auth/useAuth";
 import Card from "react-bootstrap/Card";

@@ -1,12 +1,12 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Footer/MyFooter";
 import designer from "./programador-sf.png";
 import "./Home.css";
 import Slider from "../../components/Carousel/Slider";
 import Accordion from "react-bootstrap/Accordion";
 import { Link } from "react-router-dom";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header/MyHeader";
 import curvaHome from "./curva-home.png";
 
 const HomePage = () => {

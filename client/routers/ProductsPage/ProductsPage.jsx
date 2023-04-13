@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./products.css";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/MyHeader";
+import Footer from "../../components/Footer/MyFooter";
 import CardProduct from "../../components/CardProduct/CardProduct";
 import axios from "axios";
 import time from "./Time.png";

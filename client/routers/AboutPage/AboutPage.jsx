@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../components/Header/MyHeader";
 import foto from "./perfil.png";
 import "./About.css";
 import Popup from "../../components/PopUp/PopUp";
 import pilar from "./pilar-sf.png";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/Footer/MyFooter";
 import cola from "./cola.png";
 import cima from "./cima.jpg";
 import separador from "./separador.png";

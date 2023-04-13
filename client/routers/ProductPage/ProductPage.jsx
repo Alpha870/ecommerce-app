@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./productOne.css";
-import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
+import Header from "../../components/Header/MyHeader";
+import Footer from "../../components/Footer/MyFooter";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
