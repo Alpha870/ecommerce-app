@@ -3,7 +3,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "headers": { "Location": "https://localhost/3000/$1" }
+      "headers": { "Location": "https://codeworkop.vercel.app/$1" }
     }
   ]
 }
