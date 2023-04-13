@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "http://localhost:3000/api/$1"
     }
   ]
 }
