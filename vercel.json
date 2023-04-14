@@ -1,8 +1,17 @@
 {
-  "rewrites": [
+  "version": 3,
+  "builds": [
     {
-      "source": "/api/(.*)",
-      "destination": "/server/server.js"
+      "src": "/server/server.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "/package.json",
+      "use": "@vercel/static-build"
     }
+  ],
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/api/(.*)", "dest": "/server/apis/products" },
   ]
 }
