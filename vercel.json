@@ -1,22 +1,49 @@
+// {
+//   "builds": [
+//     {
+//       "src": "server/server.js",
+//       "use": "@vercel/node"
+//     },
+//     {
+//       "src": "index.html",
+//       "use": "@vercel/static-build"
+//     }
+//   ],
+//   "routes": [
+//     { 
+//       "src": "/api/(.*)",
+//       "dest": "server/server.js" 
+//     },
+//     {
+//       "src": "/(.*)",
+//       "dest": "/index.html"
+//     }
+//   ]
+// }
+
 {
+  
   "builds": [
     {
       "src": "server/server.js",
       "use": "@vercel/node"
     },
     {
-      "src": "index.html",
-      "use": "@vercel/static-build"
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "client/build"
+      }
     }
   ],
   "routes": [
-    { 
+    {
       "src": "/api/(.*)",
-      "dest": "server/server.js" 
+      "dest": "server/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "/client/build/$1"
     }
   ]
 }
