@@ -11,14 +11,6 @@ const routerOrders = require("./apis/orders/index.js");
 //CREAR INSTANCIA
 const app = express();
 
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "script-src 'nonce-xyz123'; style-src 'nonce-xyz123'"
-  );
-  next();
-});
-
 //HABILITAR CORS
 app.use(cors());
 
@@ -39,10 +31,15 @@ app.use(express.urlencoded({ extended: "true" }));
 app.use(routerUser);
 app.use(routerProducts);
 app.use(routerCheckout);
-app.use(routerOrders)
+app.use(routerOrders);
 
 //escuchar solicitudes
 const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`aplicacion corriendo ${PORT}`);
-});
+
+if (PORT) {
+  app.listen(PORT, () => {
+    console.log(`aplicacion corriendo ${PORT}`);
+  });
+}
+
+module.exports = app;

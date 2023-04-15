@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "server": "nodemon ./server/server.js",
-    "start": "vite --host",
+    "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
   },
