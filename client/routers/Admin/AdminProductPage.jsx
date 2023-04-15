@@ -41,7 +41,7 @@ const AdminProductPage = () => {
 
   //****MOSTRAR****/
   const getAllProducts = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/getAll`;
+    const url = `${import.meta.env.VITE_BASE_URL}/products/getAll`;
     const result = await axios.get(url);
     const res = result.data.allProducts;
     setShowProduct(res);
@@ -67,14 +67,14 @@ const AdminProductPage = () => {
   //****EDITAR****/
 
   const getProduct = async (id) => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/get/${id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}/products/get/${id}`;
     const result = await axios.get(url);
     const dataProduct = result.data.showProduct;
     setFormproduct(dataProduct);
   };
 
   const editProduct = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/edit/${
+    const url = `${import.meta.env.VITE_BASE_URL}/products/edit/${
       formProduct._id
     }`;
     await axios.put(url, formProduct);
@@ -85,7 +85,7 @@ const AdminProductPage = () => {
   //****ELIMINAR****/
 
   const deleteProduct = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/delete/${
+    const url = `${import.meta.env.VITE_BASE_URL}/products/delete/${
       formProduct._id
     }`;
     await axios.delete(url);

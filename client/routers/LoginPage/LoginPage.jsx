@@ -42,7 +42,7 @@ const LoginPage = () => {
 
   const loginUser = async (e) => {
     e.preventDefault();
-    const url = `${import.meta.env.VITE_BASE_URL}users/login`;
+    const url = `${import.meta.env.VITE_BASE_URL}/users/login`;
     const result = await axios.post(url, dataLogin);
     const res = result.data.user;
     try {
@@ -69,7 +69,7 @@ const LoginPage = () => {
 
   const saveUser = async (e) => {
     e.preventDefault();
-    const url = `${import.meta.env.VITE_BASE_URL}users/create`;
+    const url = `${import.meta.env.VITE_BASE_URL}/users/create`;
     const result = await axios.post(url, dataUser);
     const res = result.data.newCreateUser;
     try {

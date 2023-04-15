@@ -13,7 +13,7 @@ const ProductsPage = () => {
 
   //****MOSTRAR****/
   const getAllProducts = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}products/getAll`;
+    const url = `${import.meta.env.VITE_BASE_URL}/products/getAll`;
     const result = await axios.get(url);
     const res = result.data.allProducts;
     setShowProduct(res);

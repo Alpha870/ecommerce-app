@@ -18,7 +18,7 @@ const ProductPage = () => {
 
   const getProduct = async () => {
     const id = window.location.href.split("/").pop();
-    const url = `${import.meta.env.VITE_BASE_URL}products/get/${id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}/products/get/${id}`;
     const result = await axios.get(url);
     const dataProduct = result.data.showProduct;
     setProduct({

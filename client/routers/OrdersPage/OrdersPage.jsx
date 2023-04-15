@@ -12,7 +12,7 @@ const OrdersPage = () => {
 
   //****MOSTRAR****/
   const getAllOrders = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}orders/getAll?userId=${
+    const url = `${import.meta.env.VITE_BASE_URL}/orders/getAll?userId=${
       user.id
     }`;
     const result = await axios.get(url);

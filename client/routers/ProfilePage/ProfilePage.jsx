@@ -27,7 +27,7 @@ const ProfilePage = () => {
   };
 
   const getUser = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}users/get`;
+    const url = `${import.meta.env.VITE_BASE_URL}/users/get`;
     const result = await axios.get(url, user);
     const dataUser = result.data.showUser;
     console.log(dataUser);
@@ -36,7 +36,7 @@ const ProfilePage = () => {
 
   const editUser = async (e) => {
     e.preventDefault();
-    const url = `${import.meta.env.VITE_BASE_URL}users/edit`;
+    const url = `${import.meta.env.VITE_BASE_URL}/users/edit`;
     const result = await axios.put(url, { formUser });
     const dataUser = result.data.newEditUser;
     modifyUser(dataUser);
@@ -56,7 +56,7 @@ const ProfilePage = () => {
 
   //****ELIMINAR****/
   const deleteUser = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}users/delete`;
+    const url = `${import.meta.env.VITE_BASE_URL}/users/delete`;
     await axios.delete(url, formUser.email);
     setUser(false);
   };

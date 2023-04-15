@@ -30,7 +30,7 @@ const CheckoutPage = () => {
   // ********* MOSTRAR PRODUCTOS ***********
   const getProduct = async () => {
     const id = window.location.href.split("/").pop();
-    const url = `${import.meta.env.VITE_BASE_URL}checkout/get/${id}`;
+    const url = `${import.meta.env.VITE_BASE_URL}/checkout/get/${id}`;
     const result = await axios.get(url);
     const dataProduct = result.data.showProduct;
     try {
@@ -84,23 +84,18 @@ const CheckoutPage = () => {
     });
   };
 
-  // captura de errores
-  const onError = (data, actions) => {
-    setErrorMessage("An Error occured with your payment ");
-  };
-
   useEffect(() => {
     if (success) {
       console.log("Pedido exitoso. Su ID de pedido es--", orderID);
       saveOrder();
     }
   }, [success]);
-  
+
   // ************* CREACIÓN DE PEDIDOS ***************
 
   //****CREAR****/
   const saveOrder = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}orders/create`;
+    const url = `${import.meta.env.VITE_BASE_URL}/orders/create`;
     const res = await axios.post(url, cart);
     try {
       console.log(res.data);
@@ -113,16 +108,24 @@ const CheckoutPage = () => {
     <>
       <Header />
       <section className="section-check">
-        <h1 className="h1-check">Carrito de compras</h1>
-        <h6>{`Hola ${user.nombre}, te agradezco que hayas 
+        {product.nombre ? (
+          <>
+            <h1 className="h1-check">Carrito de compras</h1>
+            <h6>{`Hola ${user.nombre}, te agradezco que hayas 
       llegado hasta este punto completa tu compra realizando el pago`}</h6>
-        {product && (
-          <Card style={{ width: "18rem" }}>
-            <Card.Header>{product.nombre}</Card.Header>
-            <ListGroup variant="flush">
-              <ListGroup.Item>precio: {product.precio}€</ListGroup.Item>
-            </ListGroup>
-          </Card>
+            <Card style={{ width: "18rem" }}>
+              <Card.Header>{product.nombre}</Card.Header>
+              <ListGroup variant="flush">
+                <ListGroup.Item>precio: {product.precio}€</ListGroup.Item>
+              </ListGroup>
+            </Card>
+          </>
+        ) : (
+          <>
+            <h1 className="h1-check">Carrito de compras vacío</h1>
+            <h6>{`Hola ${user.nombre}, te agradezco que hayas 
+      llegado hasta este punto, pero tu carrito está vacío`}</h6>
+          </>
         )}
         <div className="div-check">
           <h6>TOTAL = {product.precio}€</h6>
