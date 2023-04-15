@@ -5,12 +5,15 @@
       "use": "@vercel/node"
     },
     {
-      "src": "package.json",
+      "src": "index.html",
       "use": "@vercel/static-build"
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "server/server.js" },
+    { 
+      "src": "/api/(.*)",
+      "dest": "server/server.js" 
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
