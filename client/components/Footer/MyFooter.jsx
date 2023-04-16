@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import curva from './curva.png'
+import curva from "./curva.png";
 import "../Footer/my-footer.css";
 
 const Footer = () => {
@@ -15,7 +15,6 @@ const Footer = () => {
 
   return (
     <>
-      
       <img className="curva-footer" src={curva} alt="curva separadora" />
       <footer className="footer">
         <div>
@@ -34,9 +33,9 @@ const Footer = () => {
               </a>
             </li>
             <li className="icons">
-              <a href="https://drive.google.com/file/d/1r-UlGx4jMPfBeAjvi31WM28_xSG-ps0S/view?usp=share_link">
-              <i className="bx bxs-file-doc" id="github"></i>
-              <span>Leer.cv</span>
+              <a href="https://drive.google.com/file/d/19cIYvJFHMDuma55Ed_wQClts3IaIEhAO/view?usp=sharing">
+                <i className="bx bxs-file-doc" id="github"></i>
+                <span>Leer.cv</span>
               </a>
             </li>
           </ul>
