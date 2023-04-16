@@ -7,6 +7,7 @@ import axios from "axios";
 import time from "./Time.png";
 import web from "./Web.png";
 import store from "./Store.png";
+import MySpinner from "../../components/Spinner/MySpinner";
 
 const ProductsPage = () => {
   const [showProduct, setShowProduct] = useState([]);
@@ -28,10 +29,12 @@ const ProductsPage = () => {
   return (
     <section className="section-products">
       <Header />
-        <h2 className="titulo-products">¡Haz crecer tu negocio en línea! Elige el servicio que necesitas</h2>
+      <h2 className="titulo-products">
+        ¡Haz crecer tu negocio en línea! Elige el servicio que necesitas
+      </h2>
       <article className="article-products">
         <aside className="div-products">
-          {showProduct &&
+          {showProduct ? (
             showProduct.map((item, index) => (
               <div key={item._id}>
                 <CardProduct
@@ -43,7 +46,10 @@ const ProductsPage = () => {
                   text={item.subtitulo}
                 />
               </div>
-            ))}
+            ))
+          ) : (
+            <MySpinner />
+          )}
         </aside>
       </article>
       <Footer />
