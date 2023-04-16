@@ -28,14 +28,16 @@ const Footer = () => {
           <ul>
             <h6>Nos gustaria contratarte</h6>
             <li className="icons">
-              <a href="https://github.com/Alpha870">
+              <a href="https://github.com/omarPerez1987">
                 <i className="bx bxl-github" id="github"></i>
                 <span>GitHub</span>
               </a>
             </li>
             <li className="icons">
+              <a href="https://drive.google.com/file/d/1r-UlGx4jMPfBeAjvi31WM28_xSG-ps0S/view?usp=share_link">
               <i className="bx bxs-file-doc"></i>
               <span>Leer.cv</span>
+              </a>
             </li>
           </ul>
         </section>
