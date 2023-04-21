@@ -1,4 +1,4 @@
-# ecommerce-app
+# codework-app
 
 5º Proyecto del Bootcamp stack(MERN)
 
