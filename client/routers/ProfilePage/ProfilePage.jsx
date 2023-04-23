@@ -51,12 +51,12 @@ const ProfilePage = () => {
     setEditAlert(true)
   };
 
-  const modifyUser = (dataUser) => {
+  const modifyUser = (user) => {
     setFormUser({
-      nombre: dataUser.nombre,
-      telefono: dataUser.telefono,
-      email: dataUser.email,
-      password: dataUser.password,
+      nombre: user.nombre,
+      telefono: user.telefono,
+      email: user.email,
+      password: user.password,
     });
   };
 
