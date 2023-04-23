@@ -12,6 +12,7 @@ import Form from "react-bootstrap/Form";
 import interfaz from "./interfaz.png";
 import settings from "./settings.png";
 import { Link } from "react-router-dom";
+import MyAlert from "../../components/Alert/MyAlert";
 
 const ProfilePage = () => {
   const { user, setUser } = useAuth();
@@ -20,14 +21,18 @@ const ProfilePage = () => {
   const [formUser, setFormUser] = useState(user);
   const [showPass, setShowPass] = useState(false);
 
+  const [editAlert, setEditAlert] = useState(false);
+
+
   //****EDITAR****/
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormUser({ ...formUser, [name]: value });
   };
-
+  console.log(user)
+  
   const getUser = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}/users/get`;
+    const url = `${import.meta.env.VITE_BASE_URL}/users/get?email=${user.email}`;
     const result = await axios.get(url, user);
     const dataUser = result.data.showUser;
     console.log(dataUser);
@@ -43,6 +48,7 @@ const ProfilePage = () => {
     setUser(formUser);
     setEdit(false);
     getUser();
+    setEditAlert(true)
   };
 
   const modifyUser = (dataUser) => {
@@ -61,10 +67,19 @@ const ProfilePage = () => {
     setUser(false);
   };
 
+  
+
   return (
     <section>
       <Header />
       <article className="article-profile">
+      {editAlert && (
+              <MyAlert
+                head={"Editado con exito"}
+                color={"success"}
+                text={`Se a editado correctamente`}
+              />
+            )}
         {!edit && (
           <Card className="card-profile">
             <img src={interfaz} alt="interface perfil" />

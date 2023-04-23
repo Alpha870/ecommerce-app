@@ -82,7 +82,6 @@ const LoginPage = () => {
         email: res.email,
         password: res.password,
       });
-      setSuccessAlert(true);
     } catch (error) {
       setErrorAlert(true);
     }
@@ -146,14 +145,6 @@ const LoginPage = () => {
         {/* Quiere registrarse ↓↓ */}
         {register && (
           <>
-            {successAlert && (
-              <MyAlert
-                head={"Registro exitoso"}
-                color={"success"}
-                text={`Ya puedes comprar tus servicios!!!`}
-                redirect={"/products"}
-              />
-            )}
             {errorAlert && (
               <MyAlert
                 head={"Error"}
