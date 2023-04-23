@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./profile.css";
 import useAuth from "../../auth/useAuth";
 import axios from "axios";
@@ -8,35 +8,35 @@ import Boton from "../../components/Boton/Boton";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
 import interfaz from "./interfaz.png";
 import settings from "./settings.png";
 import { Link } from "react-router-dom";
 import MyAlert from "../../components/Alert/MyAlert";
+import Modal from "react-bootstrap/Modal";
 
 const ProfilePage = () => {
   const { user, setUser } = useAuth();
-
+  
   const [edit, setEdit] = useState(false);
   const [formUser, setFormUser] = useState(user);
   const [showPass, setShowPass] = useState(false);
-
+  
   const [editAlert, setEditAlert] = useState(false);
-
+  const [showModal, setShowModal] = useState(false);
 
   //****EDITAR****/
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormUser({ ...formUser, [name]: value });
   };
-  console.log(user)
-  
+
   const getUser = async () => {
-    const url = `${import.meta.env.VITE_BASE_URL}/users/get?email=${user.email}`;
+    const url = `${import.meta.env.VITE_BASE_URL}/users/get?email=${
+      user.email
+    }`;
     const result = await axios.get(url, user);
     const dataUser = result.data.showUser;
-    console.log(dataUser);
-    modifyUser(dataUser);
+    return dataUser;
   };
 
   const editUser = async (e) => {
@@ -44,20 +44,14 @@ const ProfilePage = () => {
     const url = `${import.meta.env.VITE_BASE_URL}/users/edit`;
     const result = await axios.put(url, { formUser });
     const dataUser = result.data.newEditUser;
-    modifyUser(dataUser);
-    setUser(formUser);
-    setEdit(false);
-    getUser();
-    setEditAlert(true)
-  };
-
-  const modifyUser = (user) => {
-    setFormUser({
-      nombre: user.nombre,
-      telefono: user.telefono,
-      email: user.email,
-      password: user.password,
-    });
+    try {
+      setUser(dataUser);
+      setEdit(false);
+      getUser();
+      setEditAlert(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   //****ELIMINAR****/
@@ -67,19 +61,29 @@ const ProfilePage = () => {
     setUser(false);
   };
 
+  //esta función hace que se resetee el editAlert automaticamente a false
+  const timeAlert = () => {
+    setTimeout(() => {
+      setEditAlert(false);
+    }, 3000);
+  };
+  useEffect(() => {
+    timeAlert();
+  }, [editAlert]);
+
   
 
   return (
     <section>
       <Header />
       <article className="article-profile">
-      {editAlert && (
-              <MyAlert
-                head={"Editado con exito"}
-                color={"success"}
-                text={`Se a editado correctamente`}
-              />
-            )}
+        {editAlert && (
+          <MyAlert
+            head={"Enhorabuena"}
+            color={"success"}
+            text={`Tu perfil se a editado correctamente`}
+          />
+        )}
         {!edit && (
           <Card className="card-profile">
             <img src={interfaz} alt="interface perfil" />
@@ -111,10 +115,28 @@ const ProfilePage = () => {
               <Button variant="outline-warning" onClick={() => setEdit(true)}>
                 Editar
               </Button>
-              <Button variant="outline-danger" onClick={deleteUser}>
+              <Button variant="outline-danger" onClick={() => setShowModal(true)}>
                 Eliminar
               </Button>
             </Card.Body>
+            <>
+                <Modal show={showModal} onHide={() => setShowModal(false)}>
+                  <Modal.Header closeButton>
+                    <Modal.Title>Cuidado!!!</Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    Estas apunto de eliminar tu perfil para siempre?
+                  </Modal.Body>
+                  <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowModal(false)}>
+                      Cerrar
+                    </Button>
+                    <Button variant="danger" onClick={deleteUser}>
+                      Si, quiero eliminar
+                    </Button>
+                  </Modal.Footer>
+                </Modal>
+            </>
 
             <Card.Body className="div-button-profile">
               <Link to={"/orders"}>
