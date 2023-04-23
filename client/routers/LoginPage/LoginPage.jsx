@@ -14,7 +14,7 @@ const LoginPage = () => {
   const { setUser, setAdmin } = useAuth();
   // estado para saber si quiere registrarse
   const [register, setRegister] = useState(false);
-  const [succesAlert, setSuccessAlert] = useState(false);
+  const [successAlert, setSuccessAlert] = useState(false);
   const [errorAlert, setErrorAlert] = useState(false);
 
   const [dataLogin, setDataLogin] = useState({
