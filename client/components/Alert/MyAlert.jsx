@@ -10,7 +10,7 @@ const MyAlert = ({ head, color, text, redirect }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShow(false);
-      navigate(route);
+      navigate(redirect);
     }, 6000);
     return () => clearTimeout(timer);
   }, []);
