@@ -14,6 +14,8 @@ const LoginPage = () => {
   const { setUser, setAdmin } = useAuth();
   // estado para saber si quiere registrarse
   const [register, setRegister] = useState(false);
+  const [succesAlert, setSuccessAlert] = useState(false);
+  const [errorAlert, setErrorAlert] = useState(false);
 
   const [dataLogin, setDataLogin] = useState({
     email: "",
@@ -80,9 +82,9 @@ const LoginPage = () => {
         email: res.email,
         password: res.password,
       });
-      
+      setSuccessAlert(true);
     } catch (error) {
-      console.log("error en el registro");
+      setErrorAlert(true);
     }
   };
 
@@ -90,6 +92,21 @@ const LoginPage = () => {
     <section className="section-login">
       <Header />
       <article className="article-login">
+        {successAlert && (
+          <MyAlert
+            head={"Registro exitoso"}
+            color={"success"}
+            text={`ya puedes comprar tus servicios!!!`}
+            redirect={"/products"}
+          />
+        )}
+        {errorAlert && (
+          <MyAlert
+            head={"Error"}
+            color={"danger"}
+            text={`Su registro no se a podido finalizar. Vuelva a intentarlo más tarde`}
+          />
+        )}
         {/* No quiere registrarse ↓↓ */}
         {!register && (
           <Card className="card-login">

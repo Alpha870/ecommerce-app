@@ -1,0 +1,42 @@
+.center-body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100vh;
+	width: 300px;
+	height: 300px;
+}
+
+.loader-circle {
+	font-family: sans-serif;
+	width: 10rem;
+	height: 10rem;
+	line-height: 10rem;
+	text-align: center;
+	color: #ffffff;
+	border-radius: 50%;
+	position: relative;
+}
+.loader-circle:before {
+	content: 'LOADING...';
+	font-size: 1.3rem;
+}
+.loader-circle:after {
+	content: '';
+	width: 10rem;
+	height: 10rem;
+	border-radius: 50%;
+	border: 5px solid transparent;
+	border-top: 8px solid #4cd3c2;
+	position: absolute;
+	top: -5px;
+	left: -5px;
+	animation: anm-loader-circle-17 2s ease infinite;
+	display: inline-block;
+}
+@keyframes anm-loader-circle-17 {
+	to {
+		transform: rotate(360deg);
+	}
+}

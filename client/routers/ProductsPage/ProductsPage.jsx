@@ -10,8 +10,9 @@ import store from "./Store.png";
 import MySpinner from "../../components/Spinner/MySpinner";
 
 const ProductsPage = () => {
-  const [showProduct, setShowProduct] = useState([]);
+  const [showProduct, setShowProduct] = useState(null);
 
+  console.log(showProduct)
   //****MOSTRAR****/
   const getAllProducts = async () => {
     const url = `${import.meta.env.VITE_BASE_URL}/products/getAll`;

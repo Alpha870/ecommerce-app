@@ -8,6 +8,7 @@ import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Button from "react-bootstrap/Button";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import MyAlert from "../../components/Alert/MyAlert";
 
 const initialOptions = {
   "client-id": `${import.meta.env.VITE_PAYPAL_CLIENT_ID}`,
@@ -16,15 +17,16 @@ const initialOptions = {
 };
 
 const CheckoutPage = () => {
-  const { user, setUser } = useAuth();
+    const { user, setUser } = useAuth();
 
   const [product, setProduct] = useState({});
   const [cart, setCart] = useState();
+  const [successAlert, setSuccessAlert] = useState(false);
+  const [errorAlert, setErrorAlert] = useState(false);
 
   // estados paypal
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [ErrorMessage, setErrorMessage] = useState("");
   const [orderID, setOrderID] = useState(false);
 
   // ********* MOSTRAR PRODUCTOS ***********
@@ -86,7 +88,6 @@ const CheckoutPage = () => {
 
   useEffect(() => {
     if (success) {
-      console.log("Pedido exitoso. Su ID de pedido es--", orderID);
       saveOrder();
     }
   }, [success]);
@@ -96,11 +97,11 @@ const CheckoutPage = () => {
   //****CREAR****/
   const saveOrder = async () => {
     const url = `${import.meta.env.VITE_BASE_URL}/orders/create`;
-    const res = await axios.post(url, cart);
+    await axios.post(url, cart);
     try {
-      console.log(res.data);
+      setSuccessAlert(true)
     } catch (error) {
-      console.log("error en el registro");
+      setErrorAlert(true)
     }
   };
 
@@ -110,6 +111,21 @@ const CheckoutPage = () => {
       <section className="section-check">
         {product.nombre ? (
           <>
+            {successAlert && (
+              <MyAlert
+                head={'Pedido exitoso'}
+                color={"success"}
+                text={`Será redirigido a sus pedidos`}
+                redirect={'/orders'}
+              />
+            )}
+            {errorAlert && (
+              <MyAlert
+                head={'Error'}
+                color={"danger"}
+                text={`Su pedido no se a podido finalizar. Vuelva a intentarlo más tarde`}
+              />
+            )}
             <h1 className="h1-check">Carrito de compras</h1>
             <h6>{`Hola ${user.nombre}, te agradezco que hayas 
       llegado hasta este punto completa tu compra realizando el pago`}</h6>
