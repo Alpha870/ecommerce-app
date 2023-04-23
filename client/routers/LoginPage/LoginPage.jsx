@@ -92,21 +92,6 @@ const LoginPage = () => {
     <section className="section-login">
       <Header />
       <article className="article-login">
-        {successAlert && (
-          <MyAlert
-            head={"Registro exitoso"}
-            color={"success"}
-            text={`ya puedes comprar tus servicios!!!`}
-            redirect={"/products"}
-          />
-        )}
-        {errorAlert && (
-          <MyAlert
-            head={"Error"}
-            color={"danger"}
-            text={`Su registro no se a podido finalizar. Vuelva a intentarlo más tarde`}
-          />
-        )}
         {/* No quiere registrarse ↓↓ */}
         {!register && (
           <Card className="card-login">
@@ -160,71 +145,92 @@ const LoginPage = () => {
 
         {/* Quiere registrarse ↓↓ */}
         {register && (
-          <Card className="card-login">
-            <h4>¿Aún no tienes una cuenta?</h4>
-            <h5>Registrate para que puedas iniciar sesión</h5>
-            <Card.Body>
-              <Form onSubmit={saveUser}>
-                <Form.Group className="mb-3" controlId="formBasicName">
-                  <Form.Control
-                    type="text"
-                    placeholder="Nombre y apellidos"
-                    name="nombre"
-                    value={dataUser.nombre}
-                    onChange={changeRegister}
-                    required
-                  />
-                </Form.Group>
+          <>
+            {successAlert && (
+              <MyAlert
+                head={"Registro exitoso"}
+                color={"success"}
+                text={`Ya puedes comprar tus servicios!!!`}
+                redirect={"/products"}
+              />
+            )}
+            {errorAlert && (
+              <MyAlert
+                head={"Error"}
+                color={"danger"}
+                text={`Su registro no se a podido finalizar. Vuelva a intentarlo más tarde`}
+              />
+            )}
+            <Card className="card-login">
+              <h4>¿Aún no tienes una cuenta?</h4>
+              <h5>Registrate para que puedas iniciar sesión</h5>
+              <Card.Body>
+                <Form onSubmit={saveUser}>
+                  <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Control
+                      type="text"
+                      placeholder="Nombre y apellidos"
+                      name="nombre"
+                      value={dataUser.nombre}
+                      onChange={changeRegister}
+                      required
+                    />
+                  </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicTelefon">
-                  <Form.Control
-                    type="number"
-                    placeholder="Teléfono"
-                    name="telefono"
-                    value={dataUser.telefono}
-                    onChange={changeRegister}
-                    required
-                  />
-                </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicTelefon">
+                    <Form.Control
+                      type="number"
+                      placeholder="Teléfono"
+                      name="telefono"
+                      value={dataUser.telefono}
+                      onChange={changeRegister}
+                      required
+                    />
+                  </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Control
-                    type="email"
-                    placeholder="Correo Electronico"
-                    name="email"
-                    value={dataUser.email}
-                    onChange={changeRegister}
-                    required
-                  />
-                </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                    <Form.Control
+                      type="email"
+                      placeholder="Correo Electronico"
+                      name="email"
+                      value={dataUser.email}
+                      onChange={changeRegister}
+                      required
+                    />
+                  </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Control
-                    type="password"
-                    placeholder="Contraseña"
-                    name="password"
-                    value={dataUser.password}
-                    onChange={changeRegister}
-                    required
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                    <Form.Control
+                      type="password"
+                      placeholder="Contraseña"
+                      name="password"
+                      value={dataUser.password}
+                      onChange={changeRegister}
+                      required
+                    />
+                    <Form.Text className="text-muted">
+                      Ya tengo cuenta quiero
+                      <button
+                        type="button"
+                        className="button-nada"
+                        onClick={() => setRegister(false)}
+                      >
+                        Iniciar Sesión
+                      </button>
+                    </Form.Text>
+                  </Form.Group>
+                  <Boton
+                    type={"submit"}
+                    height={"3rem"}
+                    texto={"Registrarme"}
                   />
-                  <Form.Text className="text-muted">
-                    Ya tengo cuenta quiero
-                    <button
-                      type="button"
-                      className="button-nada"
-                      onClick={() => setRegister(false)}
-                    >
-                      Iniciar Sesión
-                    </button>
-                  </Form.Text>
-                </Form.Group>
-                <Boton type={"submit"} height={"3rem"} texto={"Registrarme"} />
-              </Form>
-            </Card.Body>
-            <div className="img-card-login">
-              <img src={lapiz} alt="personas y lapiz gigante" />
-            </div>
-          </Card>
+                </Form>
+              </Card.Body>
+              <div className="img-card-login">
+                <img src={lapiz} alt="personas y lapiz gigante" />
+              </div>
+            </Card>
+          </>
         )}
       </article>
       <Footer />
