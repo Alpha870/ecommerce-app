@@ -9,6 +9,13 @@ import cola from "./cola.png";
 import cima from "./cima.jpg";
 import separador from "./separador.png";
 
+import landing from "../../components/CardProjects/imgAbout/landing.png";
+import likes from "../../components/CardProjects/imgAbout/Likes&Moves.png";
+import dashboard from "../../components/CardProjects/imgAbout/dashboard.png";
+import kiu from "../../components/CardProjects/imgAbout/restaurantKiu.png";
+import personal from "../../components/CardProjects/imgAbout/personal.png";
+import CardProyects from "../../components/CardProjects/CardProyects";
+
 const AboutPage = () => {
   const [temp, setTemp] = useState(null);
 
@@ -123,9 +130,144 @@ const AboutPage = () => {
         </section>
       </aside>
 
+      <section className="mis-proyectos">
+        <img style={{ width: "100%" }} src={separador} alt="separador " />
+        <h1 className="titulo-pilares">Algunos de mis proyectos...</h1>
+        <div className="div-cards">
+          <CardProyects
+            width={"25rem"}
+            image={personal}
+            nombre={"Codework"}
+            subtitle={"Personal page ⭐⭐⭐⭐⭐"}
+            text={
+              <>
+                <strong>¡Este proyecto es el que más me enorgullece!</strong>{" "}
+                Diseñé y desarrollé varias rutas generales para mejorar la
+                experiencia del usuario. Con rutas para administrador, usuarios
+                registrados y visitantes no registrados, este proyecto es lo más
+                completo posible.
+                <br />
+                <strong>El backend</strong> fue creado utilizando Node.js con el
+                popular framework Express. Me comuniqué con la base de datos
+                MongoDB utilizando Mongoose, un ODM muy conocido.
+                <br />
+                Por otro lado, en <strong>el frontend</strong> utilicé React
+                como librería de JavaScript para el frontend. Usé React Router
+                para las rutas del cliente y React-Bootstrap para dar estilo de
+                forma más rápida. Este proyecto seguirá creciendo a medida que
+                vaya obteniendo nuevas habilidades.
+              </>
+            }
+            url={"/"}
+          />
+          <CardProyects
+            width={"25rem"}
+            image={kiu}
+            nombre={"Kiu restaurant"}
+            subtitle={"Restaurant app"}
+            text={
+              <>
+                Con ilusión, desarrollé una asombrosa web app que se enfoca en
+                la experiencia del usuario.{" "}
+                <strong>
+                  Utilizando React en el frontend y conectándolo con Firebase
+                </strong>
+                , fui capaz de crear un sistema de registro de usuarios con
+                capacidad de hacer CRUD. Sin embargo, en lugar de crear un
+                simple restaurante como se nos pidió en el bootcamp, me esforcé
+                por ser creativo y ofrecer algo único.
+                <br />{" "}
+                <strong>
+                  ¡Así fue como nació mi asistente virtual Kiu!
+                </strong>{" "}
+                Diseñé una experiencia interactiva que sigue al usuario en cada
+                paso y se asegura de que se sienta atendido en todo momento.
+                Gracias a esta característica, logré que mi proyecto fuera no
+                solo funcional sino también simpático y entretenido.
+              </>
+            }
+            url={"https://restaurante-firebase.vercel.app/"}
+          />
+          <CardProyects
+            width={"25rem"}
+            image={likes}
+            nombre={"Likes&Movies"}
+            subtitle={"Api YouTube"}
+            text={
+              <>
+                <strong>Bienvenido a mi sitio web de películas</strong>, donde
+                puedes buscar y explorar los 10 últimos trailers más populares
+                de diferentes géneros. Para el frontend, utilicé React.js, una
+                popular biblioteca de JavaScript para construir aplicaciones
+                web.
+                <br />
+                También implementé Bootstrap para darle a mi sitio un diseño
+                elegante y responsivo. Una vez que encuentres una película que
+                te interese, puedes añadirla a "favoritos" para que puedas
+                guardar tus trailers favoritos para tener guardado el titulo
+                para más tarde.
+              </>
+            }
+            url={"https://likes-movies-alpha870.vercel.app/"}
+          />
+          <CardProyects
+            width={"25rem"}
+            image={dashboard}
+            nombre={"Market Crypto"}
+            subtitle={"Proyecto en equipo"}
+            text={
+              <>
+                Este es un proyecto de dashboard que muestra información
+                estadística en una tabla de datos interactiva,{" "}
+                <strong>el cual fue creado en equipo</strong>. La tabla de datos
+                está diseñada para que los usuarios puedan ordenar, filtrar y
+                buscar información de manera rápida y sencilla.
+                <br />
+                Para la creación de este dashboard, utilizamos{" "}
+                <strong>Vanilla JS (JavaScript puro)</strong> exceptuando
+                Chart.js, una biblioteca de gráficos de JavaScript para crear
+                visualizaciones de datos en tiempo real.
+                <br />
+                Este proyecto de dashboard
+                <strong>
+                  {" "}
+                  a sido todo un reto aqui fue donde aprendimos a utilizar git
+                  usando los merge y a tener que resolver los conflictos creados
+                  por nosotros mismos😊
+                </strong>
+                , los usuarios pueden ver fácilmente la información relevante y
+                navegar por la tabla de datos con rapidez y eficacia. Además, la
+                tabla de datos es completamente responsive, lo que significa que
+                se adapta a diferentes tamaños de pantalla para una
+                visualización óptima.
+              </>
+            }
+            url={"https://tabla-de-datos-dashboard.vercel.app/"}
+          />
+          <CardProyects
+            width={"25rem"}
+            image={landing}
+            nombre={"TrMountain"}
+            subtitle={"Landing page (diseño)"}
+            text={
+              <>
+                Este es una landing page responsive para una tienda de ropa de
+                montaña. La página web presenta una interfaz de usuario elegante
+                y moderna, con una combinación de{" "}
+                <strong>
+                  imágenes las cuales contienen animaciones y elementos de
+                  diseño atractivos
+                </strong>{" "}
+                que le dan al sitio un aspecto natural y acogedor.
+              </>
+            }
+            url={"https://tr-mountain.vercel.app/"}
+          />
+        </div>
+      </section>
+
       <section>
         <img style={{ width: "100%" }} src={separador} alt="separador " />
-
         <h1 className="titulo-pilares">Cuando desconecto...</h1>
         <h5 className="descrip-about-desconecto">
           Fuera del trabajo, disfruto de otras de mis 2 grandes pasiones mi

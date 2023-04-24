@@ -3,11 +3,17 @@ import Button from "react-bootstrap/Button";
 import Footer from "../../components/Footer/MyFooter";
 import designer from "./programador-sf.png";
 import "./Home.css";
-import Slider from "../../components/Carousel/Slider";
+import MySlider from "../../components/Carousel/MySlider";
 import Accordion from "react-bootstrap/Accordion";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/MyHeader";
 import curvaHome from "./curva-home.png";
+
+import data from "../../components/Carousel/imgHome/Data.png";
+import designer1 from "../../components/Carousel/imgHome/Designer1.png";
+import land1 from "../../components/Carousel/imgHome/Landing1.png";
+import land2 from "../../components/Carousel/imgHome/Landing2.png";
+import web from "../../components/Carousel/imgHome/Web.png";
 
 const HomePage = () => {
 
@@ -84,7 +90,7 @@ const HomePage = () => {
         </Accordion>
         <div className="div-slider">
           <section className="seccion-slider">
-            <Slider />
+            <MySlider img1={data} img2={land1} img3={land2} img4={web} img5={designer1}/>
           </section>
         </div>
       </aside>
