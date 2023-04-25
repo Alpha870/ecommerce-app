@@ -14,6 +14,9 @@ import likes from "../../components/CardProjects/imgAbout/Likes&Moves.png";
 import dashboard from "../../components/CardProjects/imgAbout/dashboard.png";
 import kiu from "../../components/CardProjects/imgAbout/restaurantKiu.png";
 import personal from "../../components/CardProjects/imgAbout/personal.png";
+import certifLanding from "../../components/CardProjects/imgCertificates/landing.png";
+import certifDashboard from "../../components/CardProjects/imgCertificates/dashboard.png";
+import certifRestaurant from "../../components/CardProjects/imgCertificates/restaurant.png";
 import CardProyects from "../../components/CardProjects/CardProyects";
 
 const AboutPage = () => {
@@ -144,21 +147,29 @@ const AboutPage = () => {
                 <strong>¡Este proyecto es el que más me enorgullece!</strong>{" "}
                 Diseñé y desarrollé varias rutas generales para mejorar la
                 experiencia del usuario. Con rutas para administrador, usuarios
-                registrados y visitantes no registrados, este proyecto es lo más
-                completo posible.
+                registrados y visitantes no registrados.
                 <br />
-                <strong>El backend</strong> fue creado utilizando Node.js con el
-                popular framework Express. Me comuniqué con la base de datos
-                MongoDB utilizando Mongoose, un ODM muy conocido.
+                <strong>El backend</strong> fue creado utilizando{" "}
+                <strong>Node.js</strong> con el popular framework{" "}
+                <strong>Express</strong>. Creé modelos tanto para users,
+                products y orders relacionando esta última para que el cliente
+                pueda visualizar sus pedidos una vez hechos. Me comuniqué con la
+                base de datos <strong>MongoDB</strong> utilizando{" "}
+                <strong>Mongoose</strong>, un ODM muy conocido.
                 <br />
-                Por otro lado, en <strong>el frontend</strong> utilicé React
-                como librería de JavaScript para el frontend. Usé React Router
-                para las rutas del cliente y React-Bootstrap para dar estilo de
-                forma más rápida. Este proyecto seguirá creciendo a medida que
-                vaya obteniendo nuevas habilidades.
+                Por otro lado, en <strong>el frontend</strong> utilicé{" "}
+                <strong>React como librería de JavaScript</strong>. Usé React
+                Router para las rutas del cliente y React-Bootstrap para dar
+                estilo de forma más rápida.{" "}
+                <strong>
+                  Este proyecto seguirá creciendo a medida que vaya obteniendo
+                  nuevas habilidades.😊
+                </strong>
               </>
             }
             url={"/"}
+            // certificates={}
+            // urlCredly={''}
           />
           <CardProyects
             width={"25rem"}
@@ -187,6 +198,10 @@ const AboutPage = () => {
               </>
             }
             url={"https://restaurante-firebase.vercel.app/"}
+            certificates={certifRestaurant}
+            urlCredly={
+              "https://www.credly.com/badges/f8c3741c-15d3-47d6-a3fb-a45dd46b7444/public_url"
+            }
           />
           <CardProyects
             width={"25rem"}
@@ -195,17 +210,29 @@ const AboutPage = () => {
             subtitle={"Api YouTube"}
             text={
               <>
-                <strong>Bienvenido a mi sitio web de películas</strong>, donde
-                puedes buscar y explorar los 10 últimos trailers más populares
-                de diferentes géneros. Para el frontend, utilicé React.js, una
-                popular biblioteca de JavaScript para construir aplicaciones
-                web.
+                Bienvenido a mi sitio web de películas,{" "}
+                <strong>
+                  a este proyecto lo llamaría mi mentor personal, aquí fue donde
+                  realmente note un gran cambio en mi lógica de programación{" "}
+                </strong>
+                , profundice como funcionaba el objeto de la respuesta de las
+                apis, averiguar como trabajar la query string para obtener
+                cambios en mi iframe. <br />
+                <strong>
+                  Aprender con los hooks de React useState, useEffect,
+                  useContext entre otros (literalmente me enamoré ❤) y ver lo
+                  cómodo y fácil que se trabaja con JSX.
+                </strong>{" "}
+                <br />
+                En este proyecto puedes buscar y explorar los 10 últimos
+                trailers más populares de diferentes géneros. Para el frontend,
+                utilicé React.js, una popular biblioteca de JavaScript para
+                construir aplicaciones web.
                 <br />
                 También implementé Bootstrap para darle a mi sitio un diseño
-                elegante y responsivo. Una vez que encuentres una película que
-                te interese, puedes añadirla a "favoritos" para que puedas
-                guardar tus trailers favoritos para tener guardado el titulo
-                para más tarde.
+                elegante y responsivo. Una vez que encuentres un tráiler qué té
+                interese, puedes añadirlo a “favoritos” para que puedas guardar
+                tus tráileres para acordarte del título para más tarde.
               </>
             }
             url={"https://likes-movies-alpha870.vercel.app/"}
@@ -243,6 +270,10 @@ const AboutPage = () => {
               </>
             }
             url={"https://tabla-de-datos-dashboard.vercel.app/"}
+            certificates={certifDashboard}
+            urlCredly={
+              "https://www.credly.com/badges/3799020a-2395-41ff-8ee0-edf719653fbd/public_url"
+            }
           />
           <CardProyects
             width={"25rem"}
@@ -252,16 +283,26 @@ const AboutPage = () => {
             text={
               <>
                 Este es una landing page responsive para una tienda de ropa de
-                montaña. La página web presenta una interfaz de usuario elegante
-                y moderna, con una combinación de{" "}
-                <strong>
-                  imágenes las cuales contienen animaciones y elementos de
-                  diseño atractivos
-                </strong>{" "}
-                que le dan al sitio un aspecto natural y acogedor.
+                montaña. Desde la selección de las imágenes perfectas hasta la
+                implementación de las animaciones y los elementos de diseño para
+                darle vida a la página. El objetivo principal era crear una
+                página que no solo se vea impresionante, sino que también
+                aplicara en todo el sitio la semántica del HTML5. Utilicé flexbox
+                para asegurarme de que la página fuera totalmente responsive y
+                para que los usuarios puedan disfrutar de una experiencia fluida
+                y sin interrupciones en cualquier dispositivo. Me encantó
+                experimentar con diferentes diseños y efectos para asegurarme de
+                que la página sea visualmente atractiva y que capte la atención
+                del usuario desde el momento en que la vea. Presenta una
+                interfaz de usuario llamativa y moderna, con una combinación de
+                que le dan al sitio un aspecto vivaz.
               </>
             }
             url={"https://tr-mountain.vercel.app/"}
+            certificates={certifLanding}
+            urlCredly={
+              "https://www.credly.com/badges/935a6881-68f8-4e0e-8f0d-2a899ddc87f4/public_url"
+            }
           />
         </div>
       </section>
