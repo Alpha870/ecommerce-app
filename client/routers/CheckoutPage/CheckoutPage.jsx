@@ -11,13 +11,14 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import MyAlert from "../../components/Alert/MyAlert";
 
 const initialOptions = {
-  "client-id": `${import.meta.env.VITE_PAYPAL_CLIENT_ID}`,
+  // "client-id": `${import.meta.env.VITE_PAYPAL_CLIENT_ID}`,
+  "client-id": "test",
   currency: "EUR",
   intent: "capture",
 };
 
 const CheckoutPage = () => {
-    const { user, setUser } = useAuth();
+  const { user, setUser } = useAuth();
 
   const [product, setProduct] = useState({});
   const [cart, setCart] = useState();
@@ -27,7 +28,6 @@ const CheckoutPage = () => {
   // estados paypal
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [orderID, setOrderID] = useState(false);
 
   // ********* MOSTRAR PRODUCTOS ***********
   const getProduct = async () => {
@@ -74,7 +74,6 @@ const CheckoutPage = () => {
         ],
       })
       .then((orderID) => {
-        setOrderID(orderID);
         return orderID;
       });
   };
@@ -99,9 +98,9 @@ const CheckoutPage = () => {
     const url = `${import.meta.env.VITE_BASE_URL}/orders/create`;
     await axios.post(url, cart);
     try {
-      setSuccessAlert(true)
+      setSuccessAlert(true);
     } catch (error) {
-      setErrorAlert(true)
+      setErrorAlert(true);
     }
   };
 
@@ -113,15 +112,15 @@ const CheckoutPage = () => {
           <>
             {successAlert && (
               <MyAlert
-                head={'Pedido exitoso'}
+                head={"Pedido exitoso"}
                 color={"success"}
                 text={`Será redirigido a sus pedidos`}
-                redirect={'/orders'}
+                redirect={"/orders"}
               />
             )}
             {errorAlert && (
               <MyAlert
-                head={'Error'}
+                head={"Error"}
                 color={"danger"}
                 text={`Su pedido no se a podido finalizar. Vuelva a intentarlo más tarde`}
               />
