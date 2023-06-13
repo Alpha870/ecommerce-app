@@ -93,7 +93,7 @@ const CheckoutPage = () => {
 
   // ************* CREACIÓN DE PEDIDOS ***************
 
-  //****CREAR****/
+  //****ENVIAR INFO PARA PEDIDOS****/
   const saveOrder = async () => {
     const url = `${import.meta.env.VITE_BASE_URL}/orders/create`;
     await axios.post(url, cart);
