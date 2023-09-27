@@ -29,7 +29,7 @@ export default function MyBanner() {
     <main className="main-container">
         {/* ******** TITLE BANNER *************************************************************** */}
 
-      <div className="div-banner">
+      <div className="div-banner-back">
         <TitleBanner
           title="/ BACKEND /"
           description="Desarrollador backend que construye la infraestructura robusta, segura y optimizada"
@@ -37,7 +37,7 @@ export default function MyBanner() {
           mouseOver={mouseOverFaceFront}
         />
       </div>
-      <div className="div-banner">
+      <div className="div-banner-front">
         <TitleBanner
           title={`< FRONTEND />`}
           description="Desarrollador front-end que crea diseños elegantes, interactivos y responsivos"
