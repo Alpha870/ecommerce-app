@@ -1,0 +1,71 @@
+.main-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  margin: 0rem 1rem;
+  padding: 0;
+}
+
+.div-banner {
+  display: flex;
+  justify-content: center;
+}
+
+.container-back {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+}
+
+.container-back img {
+  height: 90%;
+}
+.container-front img {
+  height: 90%;
+}
+
+.container-front {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  height: 100%;
+}
+
+/* // ANIMATIONS */
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes watch {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes smoke {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

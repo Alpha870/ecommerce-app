@@ -1,42 +1,33 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Footer from "../../components/Footer/MyFooter";
-import designer from "./programador-sf.png";
+
 import "./Home.css";
-import MySlider from "../../components/Carousel/MySlider";
 import Accordion from "react-bootstrap/Accordion";
 import { Link } from "react-router-dom";
 import Header from "../../components/Header/MyHeader";
 import curvaHome from "./curva-home.png";
 
+import MySlider from "../../components/Carousel/MySlider";
 import data from "../../components/Carousel/imgHome/Data.png";
 import designer1 from "../../components/Carousel/imgHome/Designer1.png";
 import land1 from "../../components/Carousel/imgHome/Landing1.png";
 import land2 from "../../components/Carousel/imgHome/Landing2.png";
 import web from "../../components/Carousel/imgHome/Web.png";
+import MyBanner from "../../components/Banner/MyBanner";
 
 const HomePage = () => {
-
   const handleScrollToTop = () => {
     window.scrollTo(0, 0);
-  }
+  };
 
   return (
     <section>
       <section className="seccion-header-article">
         <Header />
-        <article className="presentacion">
-          <h1 className="titulo">Hola, Soy Omar</h1>
-          <h1 className="titulo">Un desarrollador web</h1>
-          <h2 className="subtitulo">
-            Soy un desarrollador full-stack al que le encanta crear aplicaciones
-            web divertidas, accesibles y atractivas que den vida a los
-            productos.
-          </h2>
-          <div className="div-img">
-            <img className="img-design" src={designer} alt="imagen-diseñador" />
-          </div>
-        </article>
+        <div className="presentacion">
+          <MyBanner />
+        </div>
       </section>
       <div>
         <img className="curva-home" src={curvaHome} alt="separador curvado" />
@@ -90,7 +81,13 @@ const HomePage = () => {
         </Accordion>
         <div className="div-slider">
           <section className="seccion-slider">
-            <MySlider img1={data} img2={land1} img3={land2} img4={web} img5={designer1}/>
+            <MySlider
+              img1={data}
+              img2={land1}
+              img3={land2}
+              img4={web}
+              img5={designer1}
+            />
           </section>
         </div>
       </aside>
