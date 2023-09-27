@@ -33,7 +33,7 @@ const Footer = () => {
               </a>
             </li>
             <li className="icons">
-              <a href="https://drive.google.com/file/d/1f1NkUj27loZEwtsA9I8goVXM0cuIa_t1/view?usp=sharing">
+              <a href="https://drive.google.com/file/d/1IQA_AVrfpsMG0zF8PLRtYV1yvwvR9xSe/view?usp=sharing">
                 <i className="bx bxs-file-doc" id="github"></i>
                 <span>Leer.cv</span>
               </a>
