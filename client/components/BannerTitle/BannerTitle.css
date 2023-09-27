@@ -9,14 +9,13 @@
   text-align: center;
 }
 
-@media screen and (max-width: 1920px) {
-  .div-banner-title h1 {
-    font-size: 4rem;
-  }
-  .div-banner-title p {
-    font-size: 2rem;
-  }
+.div-banner-title h1 {
+  font-size: 4rem;
 }
+.div-banner-title p {
+  font-size: 2rem;
+}
+
 @media screen and (max-width: 1110px) {
   .div-banner-title h1 {
     font-size: 3rem;
