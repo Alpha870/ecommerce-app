@@ -27,9 +27,9 @@ export default function MyBanner() {
 
   return (
     <main className="main-container">
+        {/* ******** TITLE BANNER *************************************************************** */}
 
-      {/* ******** TITLE BANNER *************************************************************** */}
-      <div className="div-banner-back">
+      <div className="div-banner">
         <TitleBanner
           title="/ BACKEND /"
           description="Desarrollador backend que construye la infraestructura robusta, segura y optimizada"
@@ -37,7 +37,7 @@ export default function MyBanner() {
           mouseOver={mouseOverFaceFront}
         />
       </div>
-      <div className="div-banner-front">
+      <div className="div-banner">
         <TitleBanner
           title={`< FRONTEND />`}
           description="Desarrollador front-end que crea diseños elegantes, interactivos y responsivos"
@@ -61,7 +61,6 @@ export default function MyBanner() {
             src={Logos_back}
             alt="letras codigo backend"
             style={{
-              width: "60%",
               opacity: 0,
               animation:
                 "flash 150ms 0.5s 2 linear, watch 150ms 1.2s 1 linear forwards",
@@ -71,7 +70,6 @@ export default function MyBanner() {
             src={Face_back_left}
             alt="cara hombre con barba represenatada como arte"
             style={{
-              width: "40%",
               opacity: 0,
               animation:
                 "flash 150ms 1.2s 2 linear, watch 150ms 1.7s 1 linear forwards",
@@ -94,7 +92,6 @@ export default function MyBanner() {
             src={Logos_back}
             alt="letras codigo backend"
             style={{
-              width: "60%",
               opacity: mouseOverFaceFront ? 0 : 1,
               animation: mouseOverFaceBack ? "smoke 800ms 1 linear" : "",
             }}
@@ -104,7 +101,6 @@ export default function MyBanner() {
             src={mouseOverFaceFront ? Face_front_left : Face_back_left}
             alt="cara hombre con barba represenatada como arte"
             style={{
-              width: "40%",
               animation: mouseOverFaceBack ? "smoke 800ms 1 linear" : "",
             }}
           />
@@ -126,7 +122,6 @@ export default function MyBanner() {
             src={Face_front_right}
             alt="cara hombre con barba"
             style={{
-              width: "40%",
               opacity: 0,
               animation:
                 "flash 150ms 1s 2 linear, watch 150ms 1.5s 1 linear forwards",
@@ -136,7 +131,6 @@ export default function MyBanner() {
             src={Logo_front}
             alt="fragmento codigo frontend"
             style={{
-              width: "60%",
               opacity: 0,
               animation:
                 "flash 150ms 2 linear, watch 150ms 0.8s 1 linear forwards",
@@ -159,7 +153,6 @@ export default function MyBanner() {
             src={mouseOverFaceBack ? Face_back_right : Face_front_right}
             alt="cara hombre con barba"
             style={{
-              width: "40%",
               animation: mouseOverFaceFront ? "smoke 800ms 1 linear" : "",
             }}
           />
@@ -168,7 +161,6 @@ export default function MyBanner() {
             alt="fragmento codigo frontend"
             style={{
               animation: mouseOverFaceFront ? "smoke 800ms 1 linear" : "",
-              width: "60%",
               opacity: mouseOverFaceBack ? 0 : 1,
             }}
           />

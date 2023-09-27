@@ -6,45 +6,30 @@
   align-items: center;
   width: auto;
   height: auto;
-  margin: 0rem 1rem;
+  /* margin: 0rem 1rem; */
   padding: 0;
 }
 
-.div-banner-back {
-  display: flex;
-  justify-content: center;
+.div-banner-back, .div-banner-front {
+    display: flex;
+    justify-content: center;
 }
 
-.div-banner-front {
-  display: flex;
-  justify-content: center;
+.container-back, .container-front {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
-.container-back {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  width: 100%;
-  height: 100%;
+.container-back img, .container-front img {
+    height: 100%;
+    width: 50%;
 }
 
-.container-back img {
-  height: 90%;
-}
-
-.container-front {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  width: 100%;
-  height: 100%;
-}
-
-.container-front img {
-  height: 90%;
-}
 /* // ANIMATIONS */
 
 @keyframes flash {
