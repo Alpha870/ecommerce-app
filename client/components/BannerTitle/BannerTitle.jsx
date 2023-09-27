@@ -4,7 +4,7 @@ import './BannerTitle.css'
 const BannerTitle = ({ title, description, timeAnimationIntro, mouseOver }) => {
   return (
     <div
-      className="div-title"
+      className="div-banner-title"
       style={{
         animation: timeAnimationIntro ? "watch 150ms 2.4s 1 linear " : "",
       }}

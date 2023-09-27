@@ -1,8 +1,24 @@
-.div-title {
+
+.div-banner-title {
   color: whitesmoke;
-  width: 80%;
+  width: 90%;
+  margin-bottom: -1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+@media screen and (max-width: 510px) {
+  .div-banner-title h1 {
+    font-size: large;
+  }
+  .div-banner-title p {
+    display: none;
+  }
+}
+@media screen and (max-width: 340px) {
+  .div-banner-title h1 {
+    font-size: medium;
+  }
 }

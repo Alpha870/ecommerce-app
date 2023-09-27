@@ -1,10 +1,31 @@
+@font-face {
+  font-family: "proxima-nova-bold";
+  src: local("proxima-nova-bold"),
+    url(./fonts/proxima-nova-bold.otf) format("opentype");
+}
+@font-face {
+  font-family: "proxima-nova-light";
+  src: local("proxima-nova-light"),
+    url(./fonts/proxima-nova-light.otf) format("opentype");
+}
+
 * {
   margin: 0;
   padding: 0;
-  font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  /* font-family: "Roboto Condensed"; */
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   box-sizing: border-box;
   text-decoration: none;
+}
+
+h1 {
+  font-family: "proxima-nova-bold", system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif;
+}
+
+p {
+  font-family: "proxima-nova-light", system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif;
 }
 
 a:link,
@@ -14,6 +35,7 @@ a:active {
   color: black;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
 }
