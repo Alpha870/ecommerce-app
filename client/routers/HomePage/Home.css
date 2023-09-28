@@ -2,6 +2,7 @@
   margin-top: 5rem;
   padding-bottom: 10rem;
   height: auto;
+  width: 70%;
 }
 
 .titulo {
@@ -33,6 +34,10 @@
     rgba(51, 55, 138, 1) 63%,
     rgba(34, 51, 120, 1) 100%
   );
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .div-slider {
@@ -108,5 +113,11 @@
   .boton-mas {
     height: auto;
     font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .presentacion {
+    width: 100%;
   }
 }
