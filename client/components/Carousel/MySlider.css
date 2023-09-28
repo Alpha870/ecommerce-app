@@ -1,0 +1,7 @@
+.carrousel-container a span{
+    height: 3rem;
+    width: 3rem;
+    background-color: #4cd3c2;
+    border: 1px solid #4cd3c2;
+    border-radius: 50%;
+}

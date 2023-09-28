@@ -93,7 +93,7 @@ const AboutPage = () => {
               Actualmente, mi enfoque se centra en profundizar en la
               especialización de estas tecnologías para mejorar continuamente en
               mi dia a dia. Además, mi curiosidad natural me lleva a explorar la
-              rama de la ciberseguridad, con el objetivo de convertirme en un
+              rama de mobile, con el objetivo de convertirme en un
               profesional más completo y capaz.
             </p>
           </article>

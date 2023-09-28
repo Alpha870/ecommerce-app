@@ -1,10 +1,11 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import './MySlider.css'
 
 const MySlider = ({ img1, img2, img3, img4, img5 }) => {
   return (
     <>
-      <Carousel style={{ width: "100%" }}>
+      <Carousel className="carrousel-container" style={{ width: "100%"}}>
         <Carousel.Item interval={5000}>
           <img className="img-design" src={img1} alt="First slide" />
         </Carousel.Item>
